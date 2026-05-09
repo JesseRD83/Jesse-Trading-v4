@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jesse Trading v4.0 — Trade Suggestions</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; background: #070b14; color: #c9d4e8; padding: 18px; min-height: 100vh; }
+h1 { text-align: center; font-size: 1.1rem; letter-spacing: 3px; color: #38bdf8; margin-bottom: 2px; text-transform: uppercase; }
+.meta { text-align: center; font-size: 0.6rem; color: #334155; letter-spacing: 1.5px; margin-bottom: 16px; }
+.cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; max-width: 960px; margin: 0 auto; }
+@media(max-width:660px){ .cards { grid-template-columns: 1fr; } }
+
+/* TOP STRIPS */
+.strip { max-width:960px; margin:0 auto 9px; background:#0d1627; border-radius:9px; padding:8px 13px; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.oil-strip { border:1px solid #f97316; }
+.manip-strip { border:1px solid #ec4899; }
+.weekend-strip { border:1px solid #f59e0b; }
+.strip-icon { font-size:1rem; }
+.strip-label { font-size:0.56rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; }
+.oil-strip .strip-label { color:#f97316; }
+.manip-strip .strip-label { color:#ec4899; }
+.weekend-strip .strip-label { color:#f59e0b; }
+.strip-val { font-size:0.75rem; font-weight:700; }
+.strip-signal { font-size:0.63rem; flex:1; min-width:160px; }
+.oil-strip .strip-signal { color:#fed7aa; }
+.manip-strip .strip-signal { color:#f9a8d4; }
+.weekend-strip .strip-signal { color:#fcd34d; }
+.strip-pip { border-radius:20px; padding:2px 7px; font-size:0.58rem; font-weight:700; }
+.oil-pip { background:#1a0e00; border:1px solid #f97316; color:#f97316; }
+.manip-pip { background:#10050f; border:1px solid #ec4899; }
+.weekend-pip { background:#0d0900; border:1px solid #f59e0b; }
+
+.mode-bar { max-width:960px; margin:0 auto 9px; background:#0d1627; border-radius:9px; border:1px solid #1a2a40; padding:8px 13px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:7px; }
+.mode-left { font-size:0.56rem; color:#334155; text-transform:uppercase; letter-spacing:1.5px; }
+.mode-right { font-size:0.7rem; font-weight:600; }
+.mode-trend{color:#22c55e}.mode-range{color:#f59e0b}.mode-volatile{color:#ef4444}
+
+.checklist-master { max-width:960px; margin:0 auto 13px; background:#0d1627; border-radius:9px; border:1px solid #1a2a40; padding:10px 13px; }
+.cl-master-title { font-size:0.56rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#334155; margin-bottom:7px; }
+.cl-master-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; }
+@media(max-width:480px){ .cl-master-grid { grid-template-columns:1fr; } }
+.cl-row { display:flex; align-items:center; gap:5px; padding:2px 5px; border-radius:4px; font-size:0.6rem; }
+.cl-row.pass{color:#86efac;background:#0d1a0d}
+.cl-row.fish-pass{color:#06b6d4;background:#020e14}
+.cl-row.manip-pass{color:#ec4899;background:#10050f}
+.cl-row.weekend-pass{color:#f59e0b;background:#0d0900}
+.cl-row.pending{color:#334155}
+
+/* CARD */
+.card { background: #0d1627; border-radius: 13px; border: 1px solid #1a2a40; overflow: hidden; }
+.card-top { padding: 12px 14px 9px; position: relative; }
+.card-top::before { content:''; position:absolute; top:0;left:0;right:0; height:3px; }
+.card.swing .card-top::before{background:linear-gradient(90deg,#6d28d9,#a855f7)}
+.card.scalp .card-top::before{background:linear-gradient(90deg,#0e7490,#22d3ee)}
+.card.commodity .card-top::before{background:linear-gradient(90deg,#b45309,#f97316)}
+
+.type-badge { font-size:0.56rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:2px 7px; border-radius:20px; display:inline-block; margin-bottom:6px; }
+.swing .type-badge{background:#6d28d922;color:#a855f7;border:1px solid #6d28d955}
+.scalp .type-badge{background:#0e749022;color:#22d3ee;border:1px solid #0e749055}
+.commodity .type-badge{background:#b4530922;color:#f97316;border:1px solid #b4530955}
+
+.coin-row { display:flex; align-items:center; justify-content:space-between; margin-bottom:3px; }
+.coin-name { font-size:1.3rem; font-weight:800; color:#fff; }
+.dir-badge { font-size:0.68rem; font-weight:700; padding:2px 8px; border-radius:20px; }
+.dir-long{background:#15803d22;color:#22c55e;border:1px solid #15803d44}
+.dir-short{background:#991b1b22;color:#ef4444;border:1px solid #991b1b44}
+
+.price-row { display:flex; align-items:baseline; gap:7px; margin-bottom:7px; }
+.cur-price{font-size:0.85rem;color:#64748b}
+.chg-up{color:#22c55e;font-size:0.7rem;font-weight:600}
+.chg-dn{color:#ef4444;font-size:0.7rem;font-weight:600}
+
+.meta-row { display:flex; align-items:center; gap:4px; flex-wrap:wrap; margin-bottom:7px; }
+.pill { font-size:0.55rem; font-weight:600; padding:2px 6px; border-radius:9px; background:#0f172a; border:1px solid #1e293b; color:#475569; }
+.pill.rr{color:#4ade80;border-color:#15803d44;background:#14532d22}
+.pill.lev{color:#f59e0b;border-color:#78350f44;background:#78350f22}
+.pill.tf{color:#38bdf8;border-color:#0e749044;background:#0e749022}
+.pill.oil-ok{color:#f97316;border-color:#b4530944;background:#b4530922}
+.pill.fish-ok{color:#06b6d4;border-color:#06b6d444;background:#020e1a}
+.pill.manip-ok{color:#ec4899;border-color:#ec489944;background:#10050f}
+.pill.weekend-ok{color:#f59e0b;border-color:#f59e0b44;background:#0d0900}
+.pill.combined{color:#22c55e;border-color:#15803d44;background:#14532d22}
+
+/* SECTIONS */
+.section { padding:8px 14px; border-top:1px solid #0f1d2e; }
+.section.dark { background:#08111e; }
+.section.fish-bg { background:#020e14; border-top-color:#06b6d433; border-bottom:1px solid #06b6d433; }
+.section.manip-bg { background:#0a0412; border-top-color:#ec489933; border-bottom:1px solid #ec489933; }
+.section.weekend-bg { background:#0a0800; border-top-color:#f59e0b33; border-bottom:1px solid #f59e0b33; }
+
+.section-label { font-size:0.55rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#334155; margin-bottom:6px; display:flex; align-items:center; justify-content:space-between; }
+.score-pill { font-size:0.62rem; font-weight:800; padding:2px 7px; border-radius:20px; }
+.sp-7,.sp-8{background:#15803d33;color:#4ade80;border:1px solid #15803d55}
+.sp-6{background:#14532d33;color:#86efac;border:1px solid #14532d55}
+.sp-5{background:#78350f33;color:#fcd34d;border:1px solid #78350f55}
+.sp-low{background:#15803d33;color:#4ade80;border:1px solid #15803d55}
+.sp-med{background:#78350f33;color:#fcd34d;border:1px solid #78350f55}
+.sp-high{background:#991b1b33;color:#fca5a5;border:1px solid #991b1b55}
+.sp-fish{background:#06b6d422;color:#06b6d4;border:1px solid #06b6d455}
+.sp-weekend{background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b55}
+
+.ind-row { display:flex; align-items:center; justify-content:space-between; padding:3px 0; border-bottom:1px solid #0d1525; }
+.ind-row:last-child{border-bottom:none}
+.ind-row.oil-row{background:#0d0900;margin:0 -14px;padding:3px 14px}
+.ind-row.fish-row{background:#020e14;margin:0 -14px;padding:3px 14px}
+.ind-row.manip-row{background:#0a0412;margin:0 -14px;padding:3px 14px}
+.ind-left{display:flex;align-items:center;gap:5px}
+.ind-num{font-size:0.55rem;color:#334155;width:12px}
+.ind-name{font-size:0.64rem;color:#64748b}
+.ind-row.oil-row .ind-name{color:#f97316}
+.ind-row.fish-row .ind-name{color:#06b6d4}
+.ind-row.manip-row .ind-name{color:#ec4899}
+.ind-reading{font-size:0.6rem;color:#475569;font-style:italic;max-width:150px;text-align:right}
+.chk{width:15px;height:15px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:0.56rem;flex-shrink:0}
+.chk-y{background:#15803d33;color:#22c55e;border:1px solid #15803d55}
+.chk-n{background:#1e293b;color:#334155;border:1px solid #1e293b}
+.chk-w{background:#78350f33;color:#f59e0b;border:1px solid #78350f55}
+.chk-r{background:#991b1b33;color:#ef4444;border:1px solid #991b1b55}
+.chk-fish{background:#06b6d422;color:#06b6d4;border:1px solid #06b6d455}
+.chk-ok{background:#ec489922;color:#ec4899;border:1px solid #ec489955}
+
+.combined-strip { display:flex; align-items:center; justify-content:space-around; background:#0d1627; border-radius:6px; padding:6px 10px; margin-top:7px; }
+.cs-item { text-align:center; }
+.cs-lbl { font-size:0.5rem; color:#334155; text-transform:uppercase; letter-spacing:1px; }
+.cs-val { font-size:0.82rem; font-weight:800; }
+
+.info-box { background:#060e1a; border-radius:6px; padding:7px 8px; margin-bottom:7px; }
+.info-lbl { font-size:0.52rem; color:#475569; text-transform:uppercase; letter-spacing:1px; margin-bottom:2px; }
+.info-txt { font-size:0.66rem; color:#94a3b8; line-height:1.5; }
+.oil-info-box{background:#0d0900;border:1px solid #f97316;border-radius:6px;padding:6px 8px;margin-bottom:6px}
+.oil-info-lbl{font-size:0.52rem;color:#f97316;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px}
+.oil-info-txt{font-size:0.66rem;color:#fed7aa;line-height:1.5}
+.manip-info-box{background:#0a0412;border:1px solid #ec4899;border-radius:6px;padding:6px 8px;margin-bottom:6px}
+.manip-info-lbl{font-size:0.52rem;color:#ec4899;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px}
+.manip-info-txt{font-size:0.66rem;color:#f9a8d4;line-height:1.5}
+.weekend-info-box{background:#0a0800;border:1px solid #f59e0b;border-radius:6px;padding:6px 8px;margin-bottom:6px}
+.weekend-info-lbl{font-size:0.52rem;color:#f59e0b;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px}
+.weekend-info-txt{font-size:0.66rem;color:#fcd34d;line-height:1.5}
+
+.levels-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:5px; margin-bottom:6px; }
+.lvl{background:#060e1a;border-radius:6px;padding:5px 7px;text-align:center}
+.lvl .lbl{font-size:0.5rem;color:#334155;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px}
+.lvl .val{font-size:0.76rem;font-weight:700}
+.entry .val{color:#f59e0b}.tp .val{color:#22c55e}.sl .val{color:#ef4444}
+
+.checklist-section{padding:8px 14px;border-top:1px solid #0f1d2e;background:#08111e}
+.cl-s-title{font-size:0.55rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#334155;margin-bottom:6px}
+.cl-s-row{display:flex;align-items:center;gap:5px;padding:2px 0;font-size:0.62rem}
+.cl-s-row.pass{color:#86efac}.cl-s-row.fail{color:#f87171}
+.cl-s-row.fish-r{color:#67e8f9}.cl-s-row.manip-r{color:#f9a8d4}.cl-s-row.weekend-r{color:#fcd34d}
+
+.verdict{padding:8px 14px;display:flex;align-items:center;gap:7px}
+.verdict-text{font-size:0.68rem;font-weight:700;flex:1}
+.v-go{color:#22c55e}.v-caution{color:#f59e0b}.v-skip{color:#ef4444}
+.v-bar-wrap{width:55px;height:4px;background:#1a2a40;border-radius:2px}
+.v-bar{height:100%;border-radius:2px}
+.swing .v-bar{background:linear-gradient(90deg,#6d28d9,#a855f7)}
+.scalp .v-bar{background:linear-gradient(90deg,#0e7490,#22d3ee)}
+.commodity .v-bar{background:linear-gradient(90deg,#b45309,#f97316)}
+
+.no-trade{text-align:center;padding:50px 20px;color:#334155;font-size:0.78rem}
+.disclaimer{text-align:center;font-size:0.56rem;color:#1e293b;margin-top:16px;max-width:960px;margin-left:auto;margin-right:auto}
+</style>
+</head>
+<body>
+<h1>🎯 Jesse Trading v4.0</h1>
+<p class="meta" id="dateMeta">Loading...</p>
+
+<!-- STRIPS -->
+<div class="strip oil-strip">
+  <span class="strip-icon">🛢️</span>
+  <div><div class="strip-label">Oil & Macro</div><div class="strip-val" style="color:#f97316">WTI ~$95 · Brent ~$100</div></div>
+  <div class="strip-signal">Hormuz restricted. US-Iran deal pending. <strong>Deal → oil dumps → BTC pumps.</strong></div>
+  <div class="strip-pip oil-pip" id="oilPip">⏳ SET DIRECTION</div>
+</div>
+
+<div class="strip manip-strip">
+  <span class="strip-icon">🐋</span>
+  <div><div class="strip-label">Manipulation Scanner</div></div>
+  <div class="strip-signal" id="manipStripSignal" style="color:#f9a8d4">Run manipulation check on every setup before entering.</div>
+  <div class="strip-pip manip-pip" id="manipPip" style="color:#ec4899">⏳ RUN SCAN</div>
+</div>
+
+<div class="strip weekend-strip">
+  <span class="strip-icon">📅</span>
+  <div><div class="strip-label">Weekend Status</div></div>
+  <div class="strip-signal" id="weekendStripSignal" style="color:#fcd34d">Check weekend flags — 4+ flags = sit out today.</div>
+  <div class="strip-pip weekend-pip" id="weekendPip" style="color:#f59e0b">⏳ CHECK FLAGS</div>
+</div>
+
+<div class="mode-bar">
+  <div class="mode-left">📊 Market Mode</div>
+  <div class="mode-right" id="modeDisplay">—</div>
+  <div style="font-size:0.62rem;color:#475569" id="modeStrategy">Run morning scan to identify</div>
+</div>
+
+<div class="checklist-master">
+  <div class="cl-master-title">☑️ Jesse Trading v4 — Morning Checklist</div>
+  <div class="cl-master-grid" id="masterChecklist"></div>
+</div>
+
+<div class="cards" id="tradeCards">
+  <div class="no-trade" style="grid-column:1/-1">
+    <div style="font-size:2rem;margin-bottom:9px">⏳</div>
+    <div>Waiting for morning scan...</div>
+    <div style="font-size:0.63rem;margin-top:5px;color:#1e293b">Say "morning scan" at 6AM Dominican time</div>
+  </div>
+</div>
+
+<p class="disclaimer">⚠️ Jesse Trading v4.0 — Educational purposes only. Not financial advice. Crypto trading involves substantial risk of loss.</p>
+
+<script>
+// DATE
+const now=new Date();
+document.getElementById('dateMeta').textContent=
+  now.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'}).toUpperCase()+
+  ' · BTCC · $100/DAY · 8PT BASE + 🐟 FISH + 🐋 MANIP + 📅 WEEKEND';
+
+// LOAD STATE
+const oilDir=localStorage.getItem('oilDir');
+if(oilDir){
+  const labels={bull:'🔴 OIL RISING — Risk-Off',flat:'🟡 OIL FLAT — Neutral',bear:'🟢 OIL FALLING — Risk-On'};
+  const colors={bull:'#ef4444',flat:'#f59e0b',bear:'#22c55e'};
+  const el=document.getElementById('oilPip');
+  el.textContent=labels[oilDir]; el.style.color=colors[oilDir]; el.style.borderColor=colors[oilDir];
+}
+
+const modes={
+  trend:{label:'🟢 TRENDING',cls:'mode-trend',strategy:'Momentum & bounce trades. Swings valid.'},
+  range:{label:'🟡 RANGING',cls:'mode-range',strategy:'Scalps only. Range boundaries.'},
+  volatile:{label:'🔴 VOLATILE',cls:'mode-volatile',strategy:'Sit out or fade extremes.'},
+};
+const savedMode=localStorage.getItem('marketMode');
+if(savedMode&&modes[savedMode]){
+  const m=modes[savedMode];
+  document.getElementById('modeDisplay').textContent=m.label;
+  document.getElementById('modeDisplay').className='mode-right '+m.cls;
+  document.getElementById('modeStrategy').textContent=m.strategy;
+}
+
+// CHECKLIST
+const masterItems=[
+  '🛢️ Oil & Hormuz checked','Oil direction set','📅 Weekend flags checked','📅 4+ flags = sit out',
+  'Crypto news swept','BTC direction set','Tier 1 scanned (11)','Tier 2 scanned (13)',
+  'Gold/Silver/Oil checked','Base score 5/8+ (6/8 wknd)','🐋 Manip scanner run','🐋 <3 red flags confirmed',
+  '🐟 Fish Check run','🐟 Fib level confirmed','🐟 StochRSI confirmed','🐟 4H bias confirmed',
+  'Leverage set per scores','TP1 TP2 SL set','Max 2 trades open','$100 hit → STOP ✋'
+];
+const clState=JSON.parse(localStorage.getItem('checklist')||'[]');
+const clGrid=document.getElementById('masterChecklist');
+masterItems.forEach((item,i)=>{
+  const pass=clState[i]===true;
+  const cls=pass?(item.startsWith('🐟')?'fish-pass':item.startsWith('🐋')?'manip-pass':item.startsWith('📅')?'weekend-pass':'pass'):'pending';
+  clGrid.innerHTML+=`<div class="cl-row ${cls}"><span>${pass?'✅':'⬜'}</span><span>${item}</span></div>`;
+});
+
+// RENDER
+function fmtP(p){
+  if(!p&&p!==0)return'—';
+  const n=parseFloat(p);
+  if(n>999)return'$'+n.toLocaleString('en-US',{maximumFractionDigits:0});
+  if(n>1)return'$'+n.toFixed(4);
+  return'$'+n.toFixed(5);
+}
+function spClass(s){return s>=7?'sp-7':s>=6?'sp-6':s>=5?'sp-5':''}
+function vClass(s){return s>=6?'v-go':s>=5?'v-caution':'v-skip'}
+function vText(s,fish,manip,weekend){
+  const combined=s+(fish||0);
+  const reds=manip||0; const wFlags=weekend||0;
+  if(reds>=3)return'🐋 SKIP — Manipulation risk too high';
+  if(wFlags>=4)return'📅 SIT OUT — Too many weekend flags';
+  if(combined>=12&&reds<=1)return'🐟🔥🔥 EXCEPTIONAL — Max size, all systems green';
+  if(combined>=10&&reds<=1)return'🐟🔥 HIGH CONVICTION — Strong combined score';
+  if(s===8&&reds<=1)return'🔥🔥 EXCEPTIONAL — Perfect base score';
+  if(s>=7&&reds<=1)return'🔥 TAKE THIS TRADE — Max conviction';
+  if(s>=6&&reds<=1)return'💪 TAKE THIS TRADE — High conviction';
+  if(s>=5&&reds<=1)return'✅ VALID TRADE — Good setup';
+  return'⚠️ BORDERLINE — Review carefully';
+}
+function maxLev(s,fish,manip,weekend){
+  const combined=s+(fish||0);
+  const reds=manip||0; const wFlags=weekend||0;
+  if(reds>=3||wFlags>=4)return'NO TRADE';
+  const weekendCap=wFlags>=2?'10x':'20x';
+  const isWknd=wFlags>=1;
+  if(isWknd){
+    if(combined>=10)return weekendCap;
+    if(s>=5)return'10x';
+    return'NO TRADE';
+  }
+  if(combined>=12)return'31x'; if(combined>=10)return'20x';
+  if(s>=7)return'31x'; if(s>=6)return'20x';
+  if(s>=5)return'10x';
+  return'NO TRADE';
+}
+
+function renderCard(t){
+  const isLong=t.direction==='LONG';
+  const chgSign=t.change>=0?'+':'';
+  const chgClass=t.change>=0?'chg-up':'chg-dn';
+  const baseScore=t.confluence.filter(c=>c.pass).length;
+  const fishScore=t.fishCheck?t.fishCheck.filter(f=>f.pass).length:0;
+  const manipReds=t.manipCheck?t.manipCheck.filter(m=>m.flag==='red').length:0;
+  const weekendFlags=t.weekendFlags||0;
+  const combined=baseScore+fishScore;
+  const barW=(baseScore/8*100).toFixed(0);
+
+  const confRows=t.confluence.map((c,i)=>`
+    <div class="ind-row${c.oil?' oil-row':''}">
+      <div class="ind-left">
+        <span class="ind-num">${i+1}</span>
+        <div class="chk ${c.pass?'chk-y':c.warn?'chk-w':'chk-n'}">${c.pass?'✓':c.warn?'~':'✗'}</div>
+        <span class="ind-name">${c.name}${c.oil?' 🛢️':''}</span>
+      </div>
+      <span class="ind-reading">${c.reading}</span>
+    </div>`).join('');
+
+  let fishSection='';
+  if(t.fishCheck?.length){
+    const fishRows=t.fishCheck.map(f=>`
+      <div class="ind-row fish-row">
+        <div class="ind-left">
+          <div class="chk ${f.pass?'chk-fish':'chk-n'}">${f.pass?'✓':'✗'}</div>
+          <span class="ind-name">${f.name}</span>
+        </div>
+        <span class="ind-reading" style="color:${f.pass?'#67e8f9':'#334155'}">${f.reading}</span>
+      </div>`).join('');
+    fishSection=`
+    <div class="section fish-bg">
+      <div class="section-label">🐟 The Fish Check<span class="score-pill sp-fish">${fishScore}/6 — ${fishScore>=5?'STRONG':fishScore>=4?'GOOD':fishScore>=3?'FAIR':'WEAK'}</span></div>
+      ${fishRows}
+      <div class="combined-strip">
+        <div class="cs-item"><div class="cs-lbl">Base</div><div class="cs-val" style="color:#38bdf8">${baseScore}/8</div></div>
+        <div style="color:#334155">+</div>
+        <div class="cs-item"><div class="cs-lbl">Fish</div><div class="cs-val" style="color:#06b6d4">${fishScore}/6</div></div>
+        <div style="color:#334155">=</div>
+        <div class="cs-item"><div class="cs-lbl">Combined</div><div class="cs-val" style="color:${combined>=12?'#22c55e':combined>=10?'#86efac':'#f59e0b'}">${combined}/14</div></div>
+      </div>
+    </div>`;
+  }
+
+  let manipSection='';
+  if(t.manipCheck?.length){
+    const manipRows=t.manipCheck.map(m=>`
+      <div class="ind-row manip-row">
+        <div class="ind-left">
+          <div class="chk ${m.flag==='green'?'chk-y':m.flag==='yellow'?'chk-w':'chk-r'}">${m.flag==='green'?'✓':m.flag==='yellow'?'~':'✗'}</div>
+          <span class="ind-name">${m.name}</span>
+        </div>
+        <span class="ind-reading" style="color:${m.flag==='green'?'#86efac':m.flag==='yellow'?'#fcd34d':'#f9a8d4'}">${m.reading}</span>
+      </div>`).join('');
+    const manipColor=manipReds>=3?'#ef4444':manipReds>=2?'#f59e0b':'#22c55e';
+    manipSection=`
+    <div class="section manip-bg">
+      <div class="section-label">🐋 Manipulation Scanner<span class="score-pill ${manipReds>=3?'sp-high':manipReds>=2?'sp-med':'sp-low'}">${manipReds} RED — ${manipReds>=3?'SKIP':manipReds>=2?'HALF SIZE':'CLEAN'}</span></div>
+      ${manipRows}
+      <div style="margin-top:6px;font-size:0.64rem;color:${manipColor};font-weight:600">${manipReds>=3?'❌ DO NOT ENTER — Manipulation risk too high':manipReds>=2?'⚠️ Reduce position size by 50%':manipReds>=1?'🟡 One concern — proceed carefully':'🟢 Clean — no manipulation signals detected'}</div>
+    </div>`;
+  }
+
+  let weekendSection='';
+  if(t.weekendCheck?.length){
+    const wRows=t.weekendCheck.map(w=>`
+      <div class="ind-row" style="background:#0a0800">
+        <div class="ind-left">
+          <div class="chk ${w.flagged?'chk-r':'chk-y'}">${w.flagged?'⚠️':'✓'}</div>
+          <span class="ind-name" style="color:${w.flagged?'#f59e0b':'#475569'}">${w.name}</span>
+        </div>
+        <span class="ind-reading" style="color:${w.flagged?'#fcd34d':'#334155'}">${w.reading}</span>
+      </div>`).join('');
+    weekendSection=`
+    <div class="section weekend-bg">
+      <div class="section-label">📅 Weekend Filter<span class="score-pill sp-weekend">${weekendFlags}/5 FLAGS — ${weekendFlags>=4?'SIT OUT':weekendFlags>=2?'CAUTION':'LOW RISK'}</span></div>
+      ${wRows}
+      <div style="margin-top:5px;font-size:0.63rem;color:${weekendFlags>=4?'#ef4444':weekendFlags>=2?'#f59e0b':'#22c55e'};font-weight:600">${weekendFlags>=4?'❌ TOO MANY FLAGS — Sit out today':weekendFlags>=2?`⚠️ Weekend rules apply: 20x max, widen stops, take TP1 early`:'🟢 Low weekend risk — proceed normally'}</div>
+    </div>`;
+  }
+
+  const clRows=t.checklist.map(c=>`
+    <div class="cl-s-row ${c.fish?'fish-r':c.manip?'manip-r':c.weekend?'weekend-r':c.pass?'pass':'fail'}">
+      <span style="font-size:0.65rem">${c.fish?'🐟':c.manip?'🐋':c.weekend?'📅':c.pass?'✅':'❌'}</span>
+      <span>${c.item}</span>
+    </div>`).join('');
+
+  return`
+  <div class="card ${t.type}">
+    <div class="card-top">
+      <div class="type-badge">${t.type==='swing'?'🔄 Swing · '+t.timeframe:t.type==='scalp'?'⚡ Scalp · '+t.timeframe:'🛢️ Commodity · '+t.timeframe}</div>
+      <div class="coin-row">
+        <div class="coin-name">${t.coin}</div>
+        <div class="dir-badge ${isLong?'dir-long':'dir-short'}">${isLong?'▲ LONG':'▼ SHORT'}</div>
+      </div>
+      <div class="price-row">
+        <span class="cur-price">${fmtP(t.price)}</span>
+        <span class="${chgClass}">${chgSign}${t.change}% 24H</span>
+      </div>
+      <div class="meta-row">
+        <span class="pill rr">⚖️ ${t.rr}</span>
+        <span class="pill lev">⚡ ${maxLev(baseScore,fishScore,manipReds,weekendFlags)}</span>
+        <span class="pill tf">⏱ ${t.timeframe}</span>
+        ${t.oilAligned?`<span class="pill oil-ok">🛢️ Oil OK</span>`:''}
+        ${fishScore>=4?`<span class="pill fish-ok">🐟 ${fishScore}/6</span>`:''}
+        ${manipReds<=1?`<span class="pill manip-ok">🐋 ${manipReds===0?'Clean':'1 flag'}</span>`:`<span class="pill" style="color:#ef4444;border-color:#991b1b44;background:#7f1d1d22">🐋 ${manipReds} flags</span>`}
+        ${weekendFlags<=1?`<span class="pill weekend-ok">📅 ${weekendFlags===0?'Low risk':'1 flag'}</span>`:`<span class="pill" style="color:#ef4444;border-color:#991b1b44;background:#7f1d1d22">📅 ${weekendFlags} flags</span>`}
+        ${combined>=10?`<span class="pill combined">🎯 ${combined}/14</span>`:''}
+      </div>
+    </div>
+
+    <div class="section dark">
+      <div class="section-label">Base Confluence — 8 Point<span class="score-pill ${spClass(baseScore)}">${baseScore}/8 — ${baseScore>=7?'MAX':baseScore>=6?'HIGH':baseScore>=5?'GOOD':'WEAK'}</span></div>
+      ${confRows}
+    </div>
+
+    ${fishSection}
+    ${manipSection}
+    ${weekendSection}
+
+    <div class="section">
+      <div class="levels-grid">
+        <div class="lvl entry"><div class="lbl">Entry Zone</div><div class="val">${fmtP(t.entry)}</div></div>
+        <div class="lvl tp"><div class="lbl">TP1 60%</div><div class="val">${fmtP(t.tp1)}</div></div>
+        <div class="lvl sl"><div class="lbl">Stop Loss</div><div class="val">${fmtP(t.sl)}</div></div>
+      </div>
+      ${t.tp2?`<div class="lvl tp" style="margin-bottom:6px"><div class="lbl">TP2 40% runner</div><div class="val">${fmtP(t.tp2)}</div></div>`:''}
+      ${t.oilNote?`<div class="oil-info-box"><div class="oil-info-lbl">🛢️ Oil Note</div><div class="oil-info-txt">${t.oilNote}</div></div>`:''}
+      ${t.manipNote?`<div class="manip-info-box"><div class="manip-info-lbl">🐋 Manipulation Note</div><div class="manip-info-txt">${t.manipNote}</div></div>`:''}
+      ${t.weekendNote?`<div class="weekend-info-box"><div class="weekend-info-lbl">📅 Weekend Note</div><div class="weekend-info-txt">${t.weekendNote}</div></div>`:''}
+      <div class="info-box" style="border-left:2px solid #a855f7">
+        <div class="info-lbl">🎯 Entry Trigger</div>
+        <div class="info-txt">${t.trigger}</div>
+      </div>
+      <div class="info-box">
+        <div class="info-lbl">📊 Why This Trade</div>
+        <div class="info-txt">${t.signal}</div>
+      </div>
+    </div>
+
+    <div class="checklist-section">
+      <div class="cl-s-title">✅ Pre-Trade Checklist</div>
+      ${clRows}
+    </div>
+
+    <div class="verdict">
+      <div class="verdict-text ${vClass(baseScore)}">${vText(baseScore,fishScore,manipReds,weekendFlags)}</div>
+      <div class="v-bar-wrap"><div class="v-bar" style="width:${barW}%"></div></div>
+      <div style="font-size:0.72rem;font-weight:800;color:${baseScore>=6?'#22c55e':baseScore>=5?'#f59e0b':'#ef4444'}">${baseScore}/8</div>
+    </div>
+  </div>`;
+}
+
+// SAMPLE — ADA (today's live trade)
+const sampleTrades=[
+  {
+    type:'swing', coin:'ADA/USD', direction:'LONG', timeframe:'4H–Daily',
+    price:0.2702, change:-1.17, rr:'2.0:1', oilAligned:true,
+    entry:0.270116, tp1:0.2780, tp2:0.2850, sl:0.2635,
+    oilNote:'Oil flat = neutral macro. No headwind. ETF inflow streak = mild bullish tailwind. Clarity Act May 14 = sector catalyst.',
+    manipNote:'Weekend detected: wick to $0.2700 = 1 stop hunt touch already. Stop widened to $0.2635 to account for further hunting. Monitor closely.',
+    weekendNote:'Saturday trading. 20x max applies. 2 weekend flags active — widen stops, consider taking TP1 early at $0.2750 instead of $0.2780.',
+    trigger:'4H candle close above $0.2715 with increasing buy volume. Do not enter on a wick or red candle.',
+    signal:'ADA at 61.8% Fib retracement from week swing. RSI ~36 approaching oversold. MACD narrowing. Support $0.2677 held twice. StochRSI crossover on 1H. FVG overlap at Fib zone. Clarity Act vote May 14 = sector tailwind. 14/14 combined score — first perfect score in Jesse Trading v4.',
+    confluence:[
+      {name:'RSI(14)',reading:'~36 — Approaching oversold',pass:true},
+      {name:'Bollinger Bands',reading:'Price at lower band',pass:true},
+      {name:'MACD Histogram',reading:'Negative but narrowing',pass:true},
+      {name:'Support / Resistance',reading:'$0.2677 held twice',pass:true},
+      {name:'Volume',reading:'Sell volume declining',pass:true},
+      {name:'Candle Structure',reading:'Higher low forming',pass:true},
+      {name:'News / Catalyst',reading:'Clarity Act May 14 vote',pass:true},
+      {name:'Oil & Macro',reading:'Oil flat = neutral ✅',pass:true,oil:true},
+    ],
+    fishCheck:[
+      {name:'① Fib Level — within 0.5%',reading:'61.8% retracement ✅',pass:true},
+      {name:'② Swing ≥ 3× ATR(14)',reading:'Range = 3.2× ATR ✅',pass:true},
+      {name:'③ StochRSI Cross 1H',reading:'%K above %D at ~25 ✅',pass:true},
+      {name:'④ 4H Bias Aligned',reading:'4H %K > %D — longs ✅',pass:true},
+      {name:'⑤ 1H FVG at Fib Zone',reading:'FVG at $0.268–0.270 ✅',pass:true},
+      {name:'⑥ R:R ≥ 1.5:1',reading:'2.0:1 — passes ✅',pass:true},
+    ],
+    manipCheck:[
+      {name:'① Volume Anomaly',reading:'89% of avg — slightly thin',flag:'yellow'},
+      {name:'② Wick/Body Ratio',reading:'Long lower wick at $0.2700',flag:'red'},
+      {name:'③ CVD Divergence',reading:'Aligned — buy vol building',flag:'green'},
+      {name:'④ Order Book Depth',reading:'Normal weekend spread',flag:'yellow'},
+      {name:'⑤ Open Interest',reading:'OI flat — neutral signal',flag:'yellow'},
+    ],
+    weekendCheck:[
+      {name:'① Volume < 60% avg',reading:'At 89% — borderline ok',flagged:false},
+      {name:'② Wick > 2× Body',reading:'Long wick detected at lows',flagged:true},
+      {name:'③ Sell/Buy > 55/45',reading:'53/47 — mild sell pressure',flagged:false},
+      {name:'④ BTC Ranging',reading:'BTC flat in tight range',flagged:true},
+      {name:'⑤ Sunday Night',reading:'Saturday — not applicable',flagged:false},
+    ],
+    weekendFlags:2,
+    checklist:[
+      {item:'Base score 8/8 ✅',pass:true},
+      {item:'Oil direction set — neutral',pass:true},
+      {item:'Manipulation scanner run',pass:false,manip:true},
+      {item:'2 red flags — stops widened',pass:false,manip:true},
+      {item:'Weekend flags checked (2/5)',pass:false,weekend:true},
+      {item:'20x max weekend rule applied',pass:false,weekend:true},
+      {item:'Fish Check 6/6 — perfect',pass:false,fish:true},
+      {item:'Fib 61.8% confirmed',pass:false,fish:true},
+      {item:'TP1 adjusted to $0.2750 (weekend)',pass:true},
+      {item:'SL widened to $0.2635 (manip/wknd)',pass:true},
+      {item:'Leverage: 31x with $107 margin',pass:true},
+      {item:'60% exit at TP1 planned',pass:true},
+    ]
+  },
+  {
+    type:'scalp', coin:'LINK/USD', direction:'LONG', timeframe:'15M–1H',
+    price:10.33, change:-0.1, rr:'2.0:1', oilAligned:true,
+    entry:10.30, tp1:10.58, tp2:10.78, sl:10.18,
+    oilNote:'Oil flat = neutral. LINK benefits directly from Clarity Act regulatory clarity. Good macro alignment for oracle infrastructure.',
+    manipNote:'1 yellow flag on volume (slightly thin). Order book normal. CVD aligned with price. Acceptable for a scalp with normal stops.',
+    weekendNote:'Saturday — 2 weekend flags (BTC ranging + thin volume). Take TP1 at $10.55 instead of $10.58 given weekend conditions. Max 20x.',
+    trigger:'15M green candle closes above $10.33 with volume pickup. If $10.25 breaks on a 15M close — abort.',
+    signal:'LINK in brutally tight $10.03–10.61 range for 24H. BB width near narrowest point. 50% Fib retracement aligns with current price. Clarity Act Senate vote May 14 = direct catalyst for oracle infrastructure. StochRSI curling up from low 30s. 12/14 combined score.',
+    confluence:[
+      {name:'RSI(14)',reading:'~48 — Neutral, not OS',pass:false,warn:true},
+      {name:'Bollinger Bands',reading:'BB width very tight — coil',pass:true},
+      {name:'MACD Histogram',reading:'Near zero, flattening',pass:true},
+      {name:'Support / Resistance',reading:'$10.03 low, $10.61 high',pass:true},
+      {name:'Volume',reading:'Low on dip — healthy',pass:true},
+      {name:'Candle Structure',reading:'Holding range floor 15M',pass:true},
+      {name:'News / Catalyst',reading:'Clarity Act May 14 = LINK',pass:true},
+      {name:'Oil & Macro',reading:'Oil flat = neutral 🟡',pass:false,warn:true,oil:true},
+    ],
+    fishCheck:[
+      {name:'① Fib Level — within 0.5%',reading:'50% retracement ✅',pass:true},
+      {name:'② Swing ≥ 3× ATR(14)',reading:'Range = 2.8× ATR — borderline',pass:false},
+      {name:'③ StochRSI Cross 1H',reading:'%K crossing above %D ✅',pass:true},
+      {name:'④ 4H Bias Aligned',reading:'4H %K > %D — longs ✅',pass:true},
+      {name:'⑤ 1H FVG at Fib Zone',reading:'Bullish FVG at $10.30 ✅',pass:true},
+      {name:'⑥ R:R ≥ 1.5:1',reading:'2.0:1 — passes ✅',pass:true},
+    ],
+    manipCheck:[
+      {name:'① Volume Anomaly',reading:'Normal for weekend scalp',flag:'green'},
+      {name:'② Wick/Body Ratio',reading:'Clean candles on 4H',flag:'green'},
+      {name:'③ CVD Divergence',reading:'CVD aligned with price',flag:'green'},
+      {name:'④ Order Book Depth',reading:'Slightly thin — weekend',flag:'yellow'},
+      {name:'⑤ Open Interest',reading:'OI flat — weekend norm',flag:'yellow'},
+    ],
+    weekendCheck:[
+      {name:'① Volume < 60% avg',reading:'Normal for LINK on weekend',flagged:false},
+      {name:'② Wick > 2× Body',reading:'Candles clean — ok',flagged:false},
+      {name:'③ Sell/Buy > 55/45',reading:'50/50 balanced',flagged:false},
+      {name:'④ BTC Ranging',reading:'BTC flat — no direction',flagged:true},
+      {name:'⑤ Sunday Night',reading:'Saturday — not applicable',flagged:false},
+    ],
+    weekendFlags:1,
+    checklist:[
+      {item:'Base score 7/8 ✅',pass:true},
+      {item:'Oil direction set — neutral',pass:true},
+      {item:'Manipulation scanner run',pass:false,manip:true},
+      {item:'0 red flags — clean entry',pass:false,manip:true},
+      {item:'Weekend flags (1/5) — low risk',pass:false,weekend:true},
+      {item:'Fish Check 5/6 — strong',pass:false,fish:true},
+      {item:'Fib 50% confirmed',pass:false,fish:true},
+      {item:'TP1 at $10.55 (weekend adjusted)',pass:true},
+      {item:'Leverage: 20x (weekend max)',pass:true},
+      {item:'60% exit at TP1 planned',pass:true},
+    ]
+  }
+];
+
+document.getElementById('tradeCards').innerHTML=sampleTrades.map(renderCard).join('');
+
+// UPDATE STRIPS from state
+const manipReds=0; // default
+document.getElementById('manipPip').textContent='🟢 0 Red Flags';
+document.getElementById('manipPip').style.color='#22c55e';
+document.getElementById('weekendPip').textContent='⚠️ 2 Flags Active';
+document.getElementById('weekendPip').style.color='#f59e0b';
+</script>
+</body>
+</html>
