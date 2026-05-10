@@ -18,253 +18,437 @@ h1 { text-align: center; font-size: 1.2rem; letter-spacing: 3px; color: #38bdf8;
 .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink:0; }
 .blue{background:#38bdf8}.green{background:#22c55e}.purple{background:#a855f7}
 .yellow{background:#f59e0b}.red{background:#ef4444}.cyan{background:#22d3ee}
-.orange{background:#f97316}.pink{background:#ec4899}.lime{background:#84cc16}
+.orange{background:#f97316}.pink{background:#ec4899}.teal{background:#14b8a6}
 
 .section-div { max-width: 1000px; margin: 0 auto 14px; }
 .section-hdr { font-size: 0.63rem; letter-spacing: 2px; text-transform: uppercase; color: #334155; margin-bottom: 11px; display: flex; align-items: center; gap: 8px; }
 .section-hdr::before,.section-hdr::after { content:''; flex:1; height:1px; background:#1a2a40; }
-.section-hdr.fish-hdr { color:#06b6d4; }
-.section-hdr.fish-hdr::before,.section-hdr.fish-hdr::after { background:#06b6d433; }
-.section-hdr.manip-hdr { color:#ec4899; }
-.section-hdr.manip-hdr::before,.section-hdr.manip-hdr::after { background:#ec489933; }
-.section-hdr.weekend-hdr { color:#f59e0b; }
-.section-hdr.weekend-hdr::before,.section-hdr.weekend-hdr::after { background:#f59e0b33; }
+.section-hdr.fish-hdr{color:#06b6d4}.section-hdr.fish-hdr::before,.section-hdr.fish-hdr::after{background:#06b6d433}
+.section-hdr.manip-hdr{color:#ec4899}.section-hdr.manip-hdr::before,.section-hdr.manip-hdr::after{background:#ec489933}
+.section-hdr.weekend-hdr{color:#f59e0b}.section-hdr.weekend-hdr::before,.section-hdr.weekend-hdr::after{background:#f59e0b33}
 
-.reset-btn { background:#1e293b; border:1px solid #334155; border-radius:6px; padding:3px 8px; color:#475569; font-size:0.58rem; cursor:pointer; letter-spacing:1px; text-transform:uppercase; }
-.reset-btn:hover { color:#94a3b8; }
-.badge { font-size:0.52rem; background:#020e14; border-radius:4px; padding:1px 5px; margin-left:4px; }
-.badge-fish { color:#06b6d4; border:1px solid #06b6d4; }
-.badge-manip { color:#ec4899; border:1px solid #ec4899; }
-.badge-weekend { color:#f59e0b; border:1px solid #f59e0b; }
-.badge-new { color:#f97316; border:1px solid #f97316; }
+.badge{font-size:0.52rem;background:#020e14;border-radius:4px;padding:1px 5px;margin-left:4px}
+.badge-new{color:#f97316;border:1px solid #f97316}
+.badge-fix{color:#22c55e;border:1px solid #22c55e}
+.badge-fish{color:#06b6d4;border:1px solid #06b6d4}
+
+/* ALERT BANNER */
+.alert-banner { max-width:1000px; margin:0 auto 14px; background:#0d1a0d; border-radius:12px; border:2px solid #22c55e; padding:12px 16px; }
+.alert-title { font-size:0.63rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#22c55e; margin-bottom:8px; display:flex; align-items:center; gap:8px; }
+.alert-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+@media(max-width:600px){.alert-grid{grid-template-columns:1fr}}
+.alert-item { background:#060e1a; border-radius:7px; padding:8px 10px; border-left:3px solid #22c55e; }
+.alert-item.changed { border-left-color:#ef4444; }
+.alert-label { font-size:0.58rem; color:#475569; text-transform:uppercase; letter-spacing:1px; margin-bottom:3px; }
+.alert-old { font-size:0.65rem; color:#ef4444; text-decoration:line-through; }
+.alert-new { font-size:0.68rem; color:#22c55e; font-weight:700; }
 
 /* OIL */
-.oil-bar { max-width:1000px; margin:0 auto 14px; background:#0d1627; border-radius:12px; border:1px solid #f97316; padding:13px 15px; }
-.oil-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:7px; margin-bottom:10px; }
-@media(max-width:580px){ .oil-grid { grid-template-columns:1fr 1fr; } }
-.oil-stat { background:#060e1a; border-radius:7px; padding:7px 9px; text-align:center; }
-.oil-stat .lbl { font-size:0.52rem; color:#475569; text-transform:uppercase; letter-spacing:1px; margin-bottom:2px; }
-.oil-stat .val { font-size:0.85rem; font-weight:700; }
-.oil-signal { background:#1a0e00; border:1px solid #f97316; border-radius:7px; padding:7px 9px; font-size:0.68rem; color:#fed7aa; line-height:1.5; margin-bottom:9px; }
-.oil-btns { display:grid; grid-template-columns:1fr 1fr 1fr; gap:7px; margin-bottom:8px; }
-.oil-btn { background:#060e1a; border:1px solid #1a2a40; border-radius:7px; padding:8px 5px; text-align:center; cursor:pointer; transition:all 0.2s; font-size:0.6rem; }
+.oil-bar{max-width:1000px;margin:0 auto 14px;background:#0d1627;border-radius:12px;border:1px solid #f97316;padding:13px 15px}
+.oil-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:10px}
+@media(max-width:580px){.oil-grid{grid-template-columns:1fr 1fr}}
+.oil-stat{background:#060e1a;border-radius:7px;padding:7px 9px;text-align:center}
+.oil-stat .lbl{font-size:0.52rem;color:#475569;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px}
+.oil-stat .val{font-size:0.85rem;font-weight:700}
+.oil-signal{background:#1a0e00;border:1px solid #f97316;border-radius:7px;padding:7px 9px;font-size:0.68rem;color:#fed7aa;line-height:1.5;margin-bottom:9px}
+.oil-btns{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-bottom:8px}
+.oil-btn{background:#060e1a;border:1px solid #1a2a40;border-radius:7px;padding:8px 5px;text-align:center;cursor:pointer;transition:all 0.2s;font-size:0.6rem}
 .oil-btn.active-bull{border-color:#22c55e;background:#0d1a0d;color:#22c55e}
 .oil-btn.active-flat{border-color:#f59e0b;background:#1a1200;color:#f59e0b}
 .oil-btn.active-bear{border-color:#ef4444;background:#1a0d0d;color:#ef4444}
-.oil-impact { background:#060e1a; border-radius:7px; padding:7px 9px; font-size:0.66rem; color:#475569; min-height:28px; display:flex; align-items:center; }
+.oil-impact{background:#060e1a;border-radius:7px;padding:7px 9px;font-size:0.66rem;color:#475569;min-height:28px;display:flex;align-items:center}
 
-/* WEEKEND PANEL */
-.weekend-panel { max-width:1000px; margin:0 auto 14px; background:#0d1627; border-radius:12px; border:2px solid #f59e0b; padding:14px 15px; }
-.weekend-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px; }
-@media(max-width:580px){ .weekend-grid { grid-template-columns:1fr; } }
-.weekend-item { background:#060e1a; border-radius:8px; padding:9px 11px; border:1px solid #1a2a40; cursor:pointer; transition:all 0.2s; user-select:none; }
-.weekend-item:hover { border-color:#334155; }
-.weekend-item.active { border-color:#f59e0b; background:#0d0900; }
-.weekend-item.active .wi-label { color:#f59e0b; }
-.wi-label { font-size:0.63rem; font-weight:700; color:#475569; letter-spacing:1px; text-transform:uppercase; margin-bottom:3px; }
-.wi-desc { font-size:0.66rem; color:#334155; line-height:1.4; }
-.weekend-item.active .wi-desc { color:#fcd34d; }
-.weekend-score-bar { display:flex; align-items:center; gap:12px; background:#060e1a; border-radius:8px; padding:10px 14px; margin-bottom:10px; border:1px solid #f59e0b33; }
-.ws-num { font-size:2rem; font-weight:800; min-width:50px; text-align:center; }
-.ws-right { flex:1; }
-.ws-label { font-size:0.58rem; color:#475569; text-transform:uppercase; letter-spacing:1px; }
-.ws-verdict { font-size:0.74rem; font-weight:700; margin-top:3px; }
-.ws-bar-wrap { height:4px; background:#1a2a40; border-radius:2px; margin-top:7px; }
-.ws-bar-fill { height:100%; border-radius:2px; background:linear-gradient(90deg,#f59e0b,#fbbf24); transition:width 0.4s; }
-.weekend-rules { background:#0d0900; border-radius:8px; padding:9px 11px; border:1px solid #f59e0b33; }
-.wr-title { font-size:0.58rem; color:#f59e0b; text-transform:uppercase; letter-spacing:1px; font-weight:700; margin-bottom:7px; }
-.wr-row { display:flex; gap:7px; padding:4px 0; border-bottom:1px solid #1a1200; font-size:0.68rem; color:#94a3b8; line-height:1.4; }
-.wr-row:last-child { border-bottom:none; }
-.wr-num { color:#f59e0b; font-weight:700; font-size:0.62rem; flex-shrink:0; width:22px; }
+/* WEEKEND */
+.weekend-panel{max-width:1000px;margin:0 auto 14px;background:#0d1627;border-radius:12px;border:2px solid #f59e0b;padding:14px 15px}
+.weekend-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+@media(max-width:580px){.weekend-grid{grid-template-columns:1fr}}
+.weekend-item{background:#060e1a;border-radius:8px;padding:9px 11px;border:1px solid #1a2a40;cursor:pointer;transition:all 0.2s;user-select:none}
+.weekend-item.active{border-color:#f59e0b;background:#0d0900}
+.weekend-item.active .wi-label{color:#f59e0b}
+.wi-label{font-size:0.63rem;font-weight:700;color:#475569;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px}
+.wi-desc{font-size:0.66rem;color:#334155;line-height:1.4}
+.weekend-item.active .wi-desc{color:#fcd34d}
+.weekend-score-bar{display:flex;align-items:center;gap:12px;background:#060e1a;border-radius:8px;padding:10px 14px;margin-bottom:10px;border:1px solid #f59e0b33}
+.ws-num{font-size:2rem;font-weight:800;min-width:50px;text-align:center}
+.ws-right{flex:1}
+.ws-label{font-size:0.58rem;color:#475569;text-transform:uppercase;letter-spacing:1px}
+.ws-verdict{font-size:0.74rem;font-weight:700;margin-top:3px}
+.ws-bar-wrap{height:4px;background:#1a2a40;border-radius:2px;margin-top:7px}
+.ws-bar-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,#f59e0b,#fbbf24);transition:width 0.4s}
+.weekend-rules{background:#0d0900;border-radius:8px;padding:9px 11px;border:1px solid #f59e0b33}
+.wr-title{font-size:0.58rem;color:#f59e0b;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:7px}
+.wr-row{display:flex;gap:7px;padding:4px 0;border-bottom:1px solid #1a1200;font-size:0.68rem;color:#94a3b8;line-height:1.4}
+.wr-row:last-child{border-bottom:none}
+.wr-num{color:#f59e0b;font-weight:700;font-size:0.62rem;flex-shrink:0;width:22px}
 
-/* MANIPULATION PANEL */
-.manip-panel { max-width:1000px; margin:0 auto 14px; background:#0d1627; border-radius:12px; border:2px solid #ec4899; padding:14px 15px; position:relative; overflow:hidden; }
-.manip-panel::before { content:'🐋'; position:absolute; right:14px; top:10px; font-size:2rem; opacity:0.12; }
-.manip-grid { display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-bottom:12px; }
-@media(max-width:580px){ .manip-grid { grid-template-columns:1fr; } }
-.manip-item { background:#060e1a; border-radius:8px; padding:9px 11px; border:1px solid #1a2a40; cursor:pointer; transition:all 0.2s; user-select:none; }
-.manip-item:hover { border-color:#334155; }
-.manip-item.red-flag { border-color:#ec4899; background:#100510; }
-.manip-item.red-flag .mi-label { color:#ec4899; }
-.manip-item.yellow-flag { border-color:#f59e0b; background:#0d0900; }
-.manip-item.yellow-flag .mi-label { color:#f59e0b; }
-.manip-item.green-flag { border-color:#22c55e; background:#0d1a0d; }
-.manip-item.green-flag .mi-label { color:#22c55e; }
-.mi-label { font-size:0.63rem; font-weight:700; color:#475569; letter-spacing:1px; text-transform:uppercase; margin-bottom:3px; display:flex; align-items:center; gap:5px; }
-.mi-desc { font-size:0.66rem; color:#334155; line-height:1.4; }
-.manip-item.red-flag .mi-desc { color:#f9a8d4; }
-.manip-item.yellow-flag .mi-desc { color:#fcd34d; }
-.manip-item.green-flag .mi-desc { color:#86efac; }
-.manip-btns { display:flex; gap:5px; margin-top:6px; }
-.flag-btn { flex:1; padding:3px; border-radius:5px; font-size:0.55rem; font-weight:700; cursor:pointer; border:1px solid; text-align:center; transition:all 0.15s; }
-.flag-btn.r { border-color:#ec489955; color:#ec4899; background:#10050f; }
-.flag-btn.r:hover,.flag-btn.r.active { background:#ec4899; color:#fff; }
-.flag-btn.y { border-color:#f59e0b55; color:#f59e0b; background:#0d0900; }
-.flag-btn.y:hover,.flag-btn.y.active { background:#f59e0b; color:#000; }
-.flag-btn.g { border-color:#22c55e55; color:#22c55e; background:#0d1a0d; }
-.flag-btn.g:hover,.flag-btn.g.active { background:#22c55e; color:#000; }
-
-.manip-score-bar { display:flex; align-items:center; gap:12px; background:#060e1a; border-radius:8px; padding:10px 14px; margin-bottom:10px; border:1px solid #ec489933; }
-.ms-num { font-size:2rem; font-weight:800; min-width:50px; text-align:center; }
-.ms-right { flex:1; }
-.ms-label { font-size:0.58rem; color:#475569; text-transform:uppercase; letter-spacing:1px; }
-.ms-verdict { font-size:0.74rem; font-weight:700; margin-top:3px; }
-.ms-bar-wrap { height:4px; background:#1a2a40; border-radius:2px; margin-top:7px; }
-.ms-bar-fill { height:100%; border-radius:2px; transition:width 0.4s; }
-.manip-combined { display:grid; grid-template-columns:repeat(3,1fr); gap:7px; }
-.mc-box { background:#060e1a; border-radius:7px; padding:7px 9px; text-align:center; }
-.mc-box .mc-lbl { font-size:0.52rem; color:#334155; text-transform:uppercase; letter-spacing:1px; margin-bottom:3px; }
-.mc-box .mc-val { font-size:0.88rem; font-weight:800; }
+/* MANIPULATION */
+.manip-panel{max-width:1000px;margin:0 auto 14px;background:#0d1627;border-radius:12px;border:2px solid #ec4899;padding:14px 15px;position:relative;overflow:hidden}
+.manip-panel::before{content:'🐋';position:absolute;right:14px;top:10px;font-size:2rem;opacity:0.12}
+.manip-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:12px}
+@media(max-width:580px){.manip-grid{grid-template-columns:1fr}}
+.manip-item{background:#060e1a;border-radius:8px;padding:9px 11px;border:1px solid #1a2a40}
+.manip-item.red-flag{border-color:#ec4899;background:#100510}
+.manip-item.yellow-flag{border-color:#f59e0b;background:#0d0900}
+.manip-item.green-flag{border-color:#22c55e;background:#0d1a0d}
+.mi-label{font-size:0.63rem;font-weight:700;color:#475569;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px}
+.manip-item.red-flag .mi-label{color:#ec4899}
+.manip-item.yellow-flag .mi-label{color:#f59e0b}
+.manip-item.green-flag .mi-label{color:#22c55e}
+.mi-desc{font-size:0.66rem;color:#334155;line-height:1.4}
+.manip-item.red-flag .mi-desc{color:#f9a8d4}
+.manip-item.yellow-flag .mi-desc{color:#fcd34d}
+.manip-item.green-flag .mi-desc{color:#86efac}
+.manip-btns{display:flex;gap:5px;margin-top:6px}
+.flag-btn{flex:1;padding:3px;border-radius:5px;font-size:0.55rem;font-weight:700;cursor:pointer;border:1px solid;text-align:center;transition:all 0.15s}
+.flag-btn.r{border-color:#ec489955;color:#ec4899;background:#10050f}
+.flag-btn.r.active{background:#ec4899;color:#fff}
+.flag-btn.y{border-color:#f59e0b55;color:#f59e0b;background:#0d0900}
+.flag-btn.y.active{background:#f59e0b;color:#000}
+.flag-btn.g{border-color:#22c55e55;color:#22c55e;background:#0d1a0d}
+.flag-btn.g.active{background:#22c55e;color:#000}
+.manip-score-bar{display:flex;align-items:center;gap:12px;background:#060e1a;border-radius:8px;padding:10px 14px;margin-bottom:10px;border:1px solid #ec489933}
+.ms-num{font-size:2rem;font-weight:800;min-width:50px;text-align:center}
+.ms-right{flex:1}
+.ms-label{font-size:0.58rem;color:#475569;text-transform:uppercase;letter-spacing:1px}
+.ms-verdict{font-size:0.74rem;font-weight:700;margin-top:3px}
+.ms-bar-wrap{height:4px;background:#1a2a40;border-radius:2px;margin-top:7px}
+.ms-bar-fill{height:100%;border-radius:2px;transition:width 0.4s}
+.manip-combined{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.mc-box{background:#060e1a;border-radius:7px;padding:7px 9px;text-align:center}
+.mc-box .mc-lbl{font-size:0.52rem;color:#334155;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px}
+.mc-box .mc-val{font-size:0.88rem;font-weight:800}
 
 /* FISH */
-.fish-panel { max-width:1000px; margin:0 auto 14px; background:#0d1627; border-radius:12px; border:2px solid #06b6d4; padding:14px 15px; position:relative; overflow:hidden; }
-.fish-panel::before { content:'🐟'; position:absolute; right:14px; top:10px; font-size:2rem; opacity:0.12; }
-.fish-grid { display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-bottom:11px; }
-.fish-item { background:#060e1a; border-radius:8px; padding:9px 11px; cursor:pointer; border:1px solid #1a2a40; transition:all 0.2s; user-select:none; }
-.fish-item:hover { border-color:#334155; }
-.fish-item.active { border-color:#06b6d4; background:#020e14; }
-.fish-item.active .fi-label { color:#06b6d4; }
-.fi-label { font-size:0.63rem; font-weight:700; color:#475569; letter-spacing:1px; text-transform:uppercase; margin-bottom:3px; }
-.fi-desc { font-size:0.66rem; color:#334155; line-height:1.4; }
-.fish-item.active .fi-desc { color:#67e8f9; }
-.fish-score-bar { display:flex; align-items:center; gap:12px; background:#020e14; border-radius:8px; padding:10px 14px; margin-bottom:10px; border:1px solid #06b6d444; }
-.fs-num { font-size:2rem; font-weight:800; color:#06b6d4; min-width:50px; text-align:center; }
-.fs-right { flex:1; }
-.fs-label { font-size:0.58rem; color:#475569; text-transform:uppercase; letter-spacing:1px; }
-.fs-verdict { font-size:0.74rem; font-weight:700; margin-top:3px; }
-.fs-bar-wrap { height:4px; background:#1a2a40; border-radius:2px; margin-top:7px; }
-.fs-bar-fill { height:100%; border-radius:2px; background:linear-gradient(90deg,#06b6d4,#3b82f6); transition:width 0.4s; }
-.fish-combined { background:#020e14; border-radius:8px; padding:9px 12px; border:1px solid #06b6d433; }
-.fc-title { font-size:0.58rem; color:#06b6d4; text-transform:uppercase; letter-spacing:1px; font-weight:700; margin-bottom:6px; }
-.fc-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:6px; }
-.fc-box { background:#0d1627; border-radius:6px; padding:5px; text-align:center; }
-.fc-box .fc-lbl { font-size:0.5rem; color:#334155; text-transform:uppercase; letter-spacing:1px; margin-bottom:2px; }
-.fc-box .fc-val { font-size:0.8rem; font-weight:800; }
+.fish-panel{max-width:1000px;margin:0 auto 14px;background:#0d1627;border-radius:12px;border:2px solid #06b6d4;padding:14px 15px;position:relative;overflow:hidden}
+.fish-panel::before{content:'🐟';position:absolute;right:14px;top:10px;font-size:2rem;opacity:0.12}
+.fish-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:11px}
+.fish-item{background:#060e1a;border-radius:8px;padding:9px 11px;cursor:pointer;border:1px solid #1a2a40;transition:all 0.2s;user-select:none}
+.fish-item.active{border-color:#06b6d4;background:#020e14}
+.fish-item.active .fi-label{color:#06b6d4}
+.fi-label{font-size:0.63rem;font-weight:700;color:#475569;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px}
+.fi-desc{font-size:0.66rem;color:#334155;line-height:1.4}
+.fish-item.active .fi-desc{color:#67e8f9}
+.fish-score-bar{display:flex;align-items:center;gap:12px;background:#020e14;border-radius:8px;padding:10px 14px;margin-bottom:10px;border:1px solid #06b6d444}
+.fs-num{font-size:2rem;font-weight:800;color:#06b6d4;min-width:50px;text-align:center}
+.fs-right{flex:1}
+.fs-label{font-size:0.58rem;color:#475569;text-transform:uppercase;letter-spacing:1px}
+.fs-verdict{font-size:0.74rem;font-weight:700;margin-top:3px}
+.fs-bar-wrap{height:4px;background:#1a2a40;border-radius:2px;margin-top:7px}
+.fs-bar-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,#06b6d4,#3b82f6);transition:width 0.4s}
+.fish-combined{background:#020e14;border-radius:8px;padding:9px 12px;border:1px solid #06b6d433}
+.fc-title{font-size:0.58rem;color:#06b6d4;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:6px}
+.fc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.fc-box{background:#0d1627;border-radius:6px;padding:5px;text-align:center}
+.fc-box .fc-lbl{font-size:0.5rem;color:#334155;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px}
+.fc-box .fc-val{font-size:0.8rem;font-weight:800}
 
 /* MODE */
-.mode-btns { display:grid; grid-template-columns:1fr 1fr 1fr; gap:7px; margin-bottom:9px; }
-.mode-btn { background:#060e1a; border:1px solid #1a2a40; border-radius:7px; padding:9px 5px; text-align:center; cursor:pointer; transition:all 0.2s; }
+.mode-btns{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-bottom:9px}
+.mode-btn{background:#060e1a;border:1px solid #1a2a40;border-radius:7px;padding:9px 5px;text-align:center;cursor:pointer;transition:all 0.2s}
 .mode-btn.active-trend{border-color:#22c55e;background:#0d1a0d}
 .mode-btn.active-range{border-color:#f59e0b;background:#1a1200}
 .mode-btn.active-volatile{border-color:#ef4444;background:#1a0d0d}
-.mode-icon { font-size:1.1rem; margin-bottom:3px; }
-.mode-label { font-size:0.58rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#475569; }
-.mode-sub { font-size:0.56rem; color:#334155; margin-top:2px; }
+.mode-icon{font-size:1.1rem;margin-bottom:3px}
+.mode-label{font-size:0.58rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#475569}
+.mode-sub{font-size:0.56rem;color:#334155;margin-top:2px}
 .mode-btn.active-trend .mode-label{color:#22c55e}
 .mode-btn.active-range .mode-label{color:#f59e0b}
 .mode-btn.active-volatile .mode-label{color:#ef4444}
-.strategy-box { background:#060e1a; border-radius:7px; padding:9px; font-size:0.7rem; color:#64748b; text-align:center; min-height:32px; display:flex; align-items:center; justify-content:center; }
+.strategy-box{background:#060e1a;border-radius:7px;padding:9px;font-size:0.7rem;color:#64748b;text-align:center;min-height:32px;display:flex;align-items:center;justify-content:center}
 
 /* CHECKLIST */
-.checklist { list-style:none; }
-.checklist li { display:flex; align-items:flex-start; gap:9px; padding:6px 0; border-bottom:1px solid #0f1d2e; font-size:0.72rem; color:#94a3b8; cursor:pointer; user-select:none; transition:color 0.2s; }
-.checklist li:last-child { border-bottom:none; }
-.checklist li:hover { color:#e2e8f0; }
-.checklist li.checked { color:#22c55e; text-decoration:line-through; opacity:0.7; }
-.checklist li.fish-cl { border-left:2px solid #06b6d433; padding-left:5px; }
-.checklist li.fish-cl.checked { color:#06b6d4; }
-.checklist li.manip-cl { border-left:2px solid #ec489933; padding-left:5px; }
-.checklist li.manip-cl.checked { color:#ec4899; }
-.checklist li.weekend-cl { border-left:2px solid #f59e0b33; padding-left:5px; }
-.checklist li.weekend-cl.checked { color:#f59e0b; }
-.checkbox { width:15px; height:15px; border:1px solid #334155; border-radius:3px; flex-shrink:0; margin-top:1px; display:flex; align-items:center; justify-content:center; transition:all 0.2s; }
-.checklist li.checked .checkbox { background:#22c55e; border-color:#22c55e; }
-.checklist li.fish-cl.checked .checkbox { background:#06b6d4; border-color:#06b6d4; }
-.checklist li.manip-cl.checked .checkbox { background:#ec4899; border-color:#ec4899; }
-.checklist li.weekend-cl.checked .checkbox { background:#f59e0b; border-color:#f59e0b; }
-.checkmark { color:#fff; font-size:0.58rem; display:none; }
-.checklist li.checked .checkmark { display:block; }
+.checklist{list-style:none}
+.checklist li{display:flex;align-items:flex-start;gap:9px;padding:6px 0;border-bottom:1px solid #0f1d2e;font-size:0.72rem;color:#94a3b8;cursor:pointer;user-select:none;transition:color 0.2s}
+.checklist li:last-child{border-bottom:none}
+.checklist li:hover{color:#e2e8f0}
+.checklist li.checked{color:#22c55e;text-decoration:line-through;opacity:0.7}
+.checklist li.fish-cl{border-left:2px solid #06b6d433;padding-left:5px}
+.checklist li.fish-cl.checked{color:#06b6d4}
+.checklist li.manip-cl{border-left:2px solid #ec489933;padding-left:5px}
+.checklist li.manip-cl.checked{color:#ec4899}
+.checklist li.weekend-cl{border-left:2px solid #f59e0b33;padding-left:5px}
+.checklist li.weekend-cl.checked{color:#f59e0b}
+.checklist li.fix-cl{border-left:2px solid #22c55e55;padding-left:5px;background:#020e14}
+.checklist li.fix-cl.checked{color:#22c55e}
+.checkbox{width:15px;height:15px;border:1px solid #334155;border-radius:3px;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
+.checklist li.checked .checkbox{background:#22c55e;border-color:#22c55e}
+.checklist li.fish-cl.checked .checkbox{background:#06b6d4;border-color:#06b6d4}
+.checklist li.manip-cl.checked .checkbox{background:#ec4899;border-color:#ec4899}
+.checklist li.weekend-cl.checked .checkbox{background:#f59e0b;border-color:#f59e0b}
+.checklist li.fix-cl.checked .checkbox{background:#22c55e;border-color:#22c55e}
+.checkmark{color:#fff;font-size:0.58rem;display:none}
+.checklist li.checked .checkmark{display:block}
 
 /* CONFLUENCE */
-.conf-grid { display:grid; grid-template-columns:1fr 1fr; gap:7px; margin-bottom:11px; }
-.conf-item { background:#060e1a; border-radius:7px; padding:7px 9px; cursor:pointer; border:1px solid #1a2a40; transition:all 0.2s; }
-.conf-item:hover { border-color:#334155; }
-.conf-item.active { border-color:#22c55e; background:#0d1a0d; }
-.conf-item.active .conf-label { color:#22c55e; }
-.conf-item.oil-item { border-color:#f9731633; }
-.conf-item.oil-item .conf-label { color:#f97316; }
-.conf-item.oil-item.active { border-color:#22c55e; background:#0d1a0d; }
-.conf-item.oil-item.active .conf-label { color:#22c55e; }
-.conf-label { font-size:0.63rem; color:#64748b; font-weight:600; letter-spacing:1px; }
-.conf-value { font-size:0.7rem; color:#94a3b8; margin-top:2px; }
-.conf-item.active .conf-value { color:#86efac; }
-.score-display { text-align:center; padding:11px; background:#060e1a; border-radius:7px; margin-bottom:11px; }
-.score-num { font-size:2.3rem; font-weight:800; }
-.score-label { font-size:0.62rem; color:#475569; letter-spacing:1px; text-transform:uppercase; }
-.score-verdict { font-size:0.72rem; font-weight:700; margin-top:3px; }
-.lev-display { background:#060e1a; border-radius:7px; padding:9px; text-align:center; }
-.lev-num { font-size:1.3rem; font-weight:800; color:#f59e0b; }
+.conf-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:11px}
+.conf-item{background:#060e1a;border-radius:7px;padding:7px 9px;cursor:pointer;border:1px solid #1a2a40;transition:all 0.2s}
+.conf-item:hover{border-color:#334155}
+.conf-item.active{border-color:#22c55e;background:#0d1a0d}
+.conf-item.active .conf-label{color:#22c55e}
+.conf-item.oil-item{border-color:#f9731633}
+.conf-item.oil-item .conf-label{color:#f97316}
+.conf-item.oil-item.active{border-color:#22c55e;background:#0d1a0d}
+.conf-item.oil-item.active .conf-label{color:#22c55e}
+.conf-label{font-size:0.63rem;color:#64748b;font-weight:600;letter-spacing:1px}
+.conf-value{font-size:0.7rem;color:#94a3b8;margin-top:2px}
+.conf-item.active .conf-value{color:#86efac}
+.score-display{text-align:center;padding:11px;background:#060e1a;border-radius:7px;margin-bottom:11px}
+.score-num{font-size:2.3rem;font-weight:800}
+.score-label{font-size:0.62rem;color:#475569;letter-spacing:1px;text-transform:uppercase}
+.score-verdict{font-size:0.72rem;font-weight:700;margin-top:3px}
+.lev-display{background:#060e1a;border-radius:7px;padding:9px;text-align:center}
+.lev-num{font-size:1.3rem;font-weight:800;color:#f59e0b}
 
 /* TRADE LOG */
-.trade-form { display:grid; grid-template-columns:1fr 1fr; gap:7px; margin-bottom:10px; }
-.input-group { display:flex; flex-direction:column; gap:3px; }
-.input-group label { font-size:0.56rem; color:#475569; text-transform:uppercase; letter-spacing:1px; }
-.input-group input,.input-group select { background:#060e1a; border:1px solid #1a2a40; border-radius:5px; padding:5px 7px; color:#e2e8f0; font-size:0.7rem; outline:none; width:100%; }
-.input-group input:focus,.input-group select:focus { border-color:#38bdf8; }
-.btn { background:#0e7490; border:none; border-radius:7px; padding:7px 14px; color:#fff; font-size:0.7rem; font-weight:700; cursor:pointer; width:100%; letter-spacing:1px; text-transform:uppercase; transition:background 0.2s; }
-.btn:hover { background:#0891b2; }
+.trade-form{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:10px}
+.input-group{display:flex;flex-direction:column;gap:3px}
+.input-group label{font-size:0.56rem;color:#475569;text-transform:uppercase;letter-spacing:1px}
+.input-group input,.input-group select{background:#060e1a;border:1px solid #1a2a40;border-radius:5px;padding:5px 7px;color:#e2e8f0;font-size:0.7rem;outline:none;width:100%}
+.input-group input:focus,.input-group select:focus{border-color:#38bdf8}
+.btn{background:#0e7490;border:none;border-radius:7px;padding:7px 14px;color:#fff;font-size:0.7rem;font-weight:700;cursor:pointer;width:100%;letter-spacing:1px;text-transform:uppercase;transition:background 0.2s}
+.btn:hover{background:#0891b2}
 .btn-green{background:#15803d}.btn-green:hover{background:#166534}
-.trades-table { width:100%; border-collapse:collapse; font-size:0.66rem; }
-.trades-table th { padding:5px 7px; text-align:left; font-size:0.52rem; letter-spacing:1.5px; text-transform:uppercase; color:#334155; border-bottom:1px solid #1a2a40; white-space:nowrap; }
-.trades-table td { padding:6px 7px; border-bottom:1px solid #0f1d2e; color:#94a3b8; white-space:nowrap; }
-.trades-table tr:last-child td { border-bottom:none; }
+.trades-table{width:100%;border-collapse:collapse;font-size:0.66rem}
+.trades-table th{padding:5px 7px;text-align:left;font-size:0.52rem;letter-spacing:1.5px;text-transform:uppercase;color:#334155;border-bottom:1px solid #1a2a40;white-space:nowrap}
+.trades-table td{padding:6px 7px;border-bottom:1px solid #0f1d2e;color:#94a3b8;white-space:nowrap}
+.trades-table tr:last-child td{border-bottom:none}
 .win{color:#22c55e;font-weight:700}.loss{color:#ef4444;font-weight:700}.running{color:#f59e0b;font-weight:700}
 
 /* PNL */
-.pnl-display { text-align:center; padding:14px; background:#060e1a; border-radius:9px; margin-bottom:11px; }
-.pnl-num { font-size:1.9rem; font-weight:800; }
-.pnl-target { font-size:0.62rem; color:#475569; margin-top:3px; }
-.pnl-bar-wrap { background:#0f1d2e; border-radius:3px; height:5px; margin-top:9px; }
-.pnl-bar { height:100%; border-radius:3px; background:linear-gradient(90deg,#22c55e,#4ade80); transition:width 0.5s; }
+.pnl-display{text-align:center;padding:14px;background:#060e1a;border-radius:9px;margin-bottom:11px}
+.pnl-num{font-size:1.9rem;font-weight:800}
+.pnl-target{font-size:0.62rem;color:#475569;margin-top:3px}
+.pnl-bar-wrap{background:#0f1d2e;border-radius:3px;height:5px;margin-top:9px}
+.pnl-bar{height:100%;border-radius:3px;background:linear-gradient(90deg,#22c55e,#4ade80);transition:width 0.5s}
 
 /* RULES */
-.rules-list { list-style:none; }
-.rules-list li { padding:6px 0; border-bottom:1px solid #0f1d2e; font-size:0.7rem; color:#94a3b8; display:flex; gap:7px; align-items:flex-start; line-height:1.5; }
-.rules-list li:last-child { border-bottom:none; }
-.rules-list li.fish-rule { border-left:2px solid #06b6d455; padding-left:7px; background:#02080f; }
-.rules-list li.manip-rule { border-left:2px solid #ec489955; padding-left:7px; background:#0f0510; }
-.rules-list li.weekend-rule { border-left:2px solid #f59e0b55; padding-left:7px; background:#0d0a00; }
-.rule-num { font-weight:700; font-size:0.63rem; flex-shrink:0; width:22px; }
-.rule-base .rule-num { color:#38bdf8; }
-.rule-fish .rule-num { color:#06b6d4; }
-.rule-manip .rule-num { color:#ec4899; }
-.rule-weekend .rule-num { color:#f59e0b; }
+.rules-list{list-style:none}
+.rules-list li{padding:6px 0;border-bottom:1px solid #0f1d2e;font-size:0.7rem;color:#94a3b8;display:flex;gap:7px;align-items:flex-start;line-height:1.5}
+.rules-list li:last-child{border-bottom:none}
+.rules-list li.fish-rule{border-left:2px solid #06b6d455;padding-left:7px;background:#02080f}
+.rules-list li.manip-rule{border-left:2px solid #ec489955;padding-left:7px;background:#0f0510}
+.rules-list li.weekend-rule{border-left:2px solid #f59e0b55;padding-left:7px;background:#0d0a00}
+.rules-list li.fee-rule{border-left:2px solid #22d3ee55;padding-left:7px;background:#020e14}
+.rules-list li.fix-rule{border-left:2px solid #22c55e55;padding-left:7px;background:#0d1a0d}
+.rule-num{font-weight:700;font-size:0.63rem;flex-shrink:0;width:22px}
+.rule-base .rule-num{color:#38bdf8}
+.rule-fish .rule-num{color:#06b6d4}
+.rule-manip .rule-num{color:#ec4899}
+.rule-weekend .rule-num{color:#f59e0b}
+.rule-fee .rule-num{color:#22d3ee}
+.rule-fix .rule-num{color:#22c55e}
 
-.notes-area { width:100%; background:#060e1a; border:1px solid #1a2a40; border-radius:7px; padding:9px; color:#94a3b8; font-size:0.7rem; min-height:75px; outline:none; resize:vertical; font-family:inherit; line-height:1.5; }
-.notes-area:focus { border-color:#38bdf8; }
-.disclaimer { text-align:center; font-size:0.56rem; color:#1e293b; margin-top:22px; max-width:1000px; margin-left:auto; margin-right:auto; }
+.reset-btn{background:#1e293b;border:1px solid #334155;border-radius:6px;padding:3px 8px;color:#475569;font-size:0.58rem;cursor:pointer;letter-spacing:1px;text-transform:uppercase}
+.reset-btn:hover{color:#94a3b8}
+.notes-area{width:100%;background:#060e1a;border:1px solid #1a2a40;border-radius:7px;padding:9px;color:#94a3b8;font-size:0.7rem;min-height:75px;outline:none;resize:vertical;font-family:inherit;line-height:1.5}
+.notes-area:focus{border-color:#38bdf8}
+.disclaimer{text-align:center;font-size:0.56rem;color:#1e293b;margin-top:22px;max-width:1000px;margin-left:auto;margin-right:auto}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; background: #070b14; color: #c9d4e8; padding: 20px; }
+
+/* MARKET BIAS PANEL */
+.bias-panel { max-width:1000px; margin:0 auto 16px; background:#0d1627; border-radius:14px; border:2px solid #38bdf8; padding:16px; position:relative; overflow:hidden; }
+.bias-panel::before { content:'📊'; position:absolute; right:16px; top:12px; font-size:2.5rem; opacity:0.08; }
+
+.bias-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; flex-wrap:wrap; gap:8px; }
+.bias-title { font-size:0.65rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#38bdf8; display:flex; align-items:center; gap:8px; }
+.bias-result { font-size:1.1rem; font-weight:800; padding:4px 16px; border-radius:20px; }
+.bias-long { background:#15803d33; color:#22c55e; border:2px solid #22c55e; }
+.bias-short { background:#991b1b33; color:#ef4444; border:2px solid #ef4444; }
+.bias-neutral { background:#78350f33; color:#f59e0b; border:2px solid #f59e0b; }
+
+/* BIAS INDICATORS GRID */
+.bias-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:14px; }
+@media(max-width:650px){ .bias-grid { grid-template-columns:1fr 1fr; } }
+@media(max-width:420px){ .bias-grid { grid-template-columns:1fr; } }
+
+.bias-indicator { background:#060e1a; border-radius:10px; padding:11px 13px; border:1px solid #1a2a40; cursor:pointer; transition:all 0.2s; user-select:none; position:relative; }
+.bias-indicator:hover { border-color:#334155; }
+.bias-indicator.bull { border-color:#22c55e; background:#0d1a0d; }
+.bias-indicator.bear { border-color:#ef4444; background:#1a0d0d; }
+.bi-label { font-size:0.6rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#475569; margin-bottom:5px; display:flex; align-items:center; gap:5px; }
+.bias-indicator.bull .bi-label { color:#22c55e; }
+.bias-indicator.bear .bi-label { color:#ef4444; }
+.bi-value { font-size:1.1rem; font-weight:800; color:#334155; margin-bottom:3px; }
+.bias-indicator.bull .bi-value { color:#4ade80; }
+.bias-indicator.bear .bi-value { color:#f87171; }
+.bi-signal { font-size:0.62rem; color:#334155; }
+.bias-indicator.bull .bi-signal { color:#86efac; }
+.bias-indicator.bear .bi-signal { color:#fca5a5; }
+.bi-btns { display:flex; gap:5px; margin-top:8px; }
+.bi-btn { flex:1; padding:4px; border-radius:6px; font-size:0.58rem; font-weight:700; cursor:pointer; border:1px solid; text-align:center; transition:all 0.15s; }
+.bi-btn.bull-btn { border-color:#22c55e55; color:#22c55e; background:#0d1a0d; }
+.bi-btn.bull-btn:hover,.bi-btn.bull-btn.active { background:#22c55e; color:#000; }
+.bi-btn.bear-btn { border-color:#ef444455; color:#ef4444; background:#1a0d0d; }
+.bi-btn.bear-btn:hover,.bi-btn.bear-btn.active { background:#ef4444; color:#fff; }
+.bi-btn.neut-btn { border-color:#47556955; color:#475569; background:#0f172a; }
+.bi-btn.neut-btn:hover,.bi-btn.neut-btn.active { background:#475569; color:#fff; }
+
+/* SCORE BAR */
+.bias-score-section { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px; }
+@media(max-width:500px){ .bias-score-section { grid-template-columns:1fr; } }
+.bias-score-box { background:#060e1a; border-radius:10px; padding:12px 14px; }
+.bsb-label { font-size:0.58rem; color:#475569; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; }
+.bsb-bar-wrap { display:flex; align-items:center; gap:8px; }
+.bsb-bar { flex:1; height:8px; background:#1a2a40; border-radius:4px; overflow:hidden; }
+.bsb-fill-bull { height:100%; border-radius:4px; background:linear-gradient(90deg,#22c55e,#4ade80); transition:width 0.5s; }
+.bsb-fill-bear { height:100%; border-radius:4px; background:linear-gradient(90deg,#ef4444,#f87171); transition:width 0.5s; }
+.bsb-num { font-size:0.9rem; font-weight:800; min-width:30px; text-align:right; }
+
+/* BIAS VERDICT BOX */
+.bias-verdict-box { background:#060e1a; border-radius:10px; padding:14px 16px; margin-bottom:14px; border:2px solid #1a2a40; transition:border-color 0.3s; }
+.bvb-title { font-size:0.58rem; color:#475569; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; }
+.bvb-text { font-size:0.78rem; font-weight:700; line-height:1.6; }
+.bvb-strategy { font-size:0.7rem; color:#64748b; margin-top:6px; line-height:1.6; }
+
+/* ROTATION DETECTOR */
+.rotation-panel { background:#020e14; border-radius:10px; padding:13px 15px; margin-bottom:14px; border:1px solid #06b6d433; }
+.rp-title { font-size:0.6rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#06b6d4; margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+.rotation-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-bottom:10px; }
+.rot-item { background:#0d1627; border-radius:8px; padding:9px 11px; text-align:center; }
+.rot-item .rl { font-size:0.55rem; color:#334155; text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; }
+.rot-item .rv { font-size:0.9rem; font-weight:800; }
+.rot-item .rs { font-size:0.62rem; color:#475569; margin-top:2px; }
+.rotation-signal { background:#0d1627; border-radius:8px; padding:10px 12px; font-size:0.7rem; line-height:1.6; }
+.rs-label { font-size:0.55rem; color:#06b6d4; text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; font-weight:700; }
+
+/* BREAKOUT DETECTOR */
+.breakout-panel { background:#0a0412; border-radius:10px; padding:13px 15px; margin-bottom:14px; border:1px solid #a855f755; }
+.bp-title { font-size:0.6rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#a855f7; margin-bottom:10px; }
+.breakout-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:10px; }
+@media(max-width:500px){ .breakout-grid { grid-template-columns:1fr; } }
+.bo-item { background:#0d1627; border-radius:8px; padding:9px 11px; cursor:pointer; border:1px solid #1a2a40; transition:all 0.2s; user-select:none; }
+.bo-item.active { border-color:#a855f7; background:#0a0412; }
+.bo-item.active .bo-label { color:#a855f7; }
+.bo-label { font-size:0.62rem; font-weight:700; color:#475569; letter-spacing:1px; text-transform:uppercase; margin-bottom:3px; }
+.bo-desc { font-size:0.65rem; color:#334155; line-height:1.4; }
+.bo-item.active .bo-desc { color:#d8b4fe; }
+.bo-score { background:#0d1627; border-radius:8px; padding:9px 12px; display:flex; align-items:center; gap:12px; }
+.bo-num { font-size:1.8rem; font-weight:800; color:#a855f7; min-width:45px; text-align:center; }
+.bo-verdict { font-size:0.72rem; font-weight:700; color:#334155; }
+.bo-bar-wrap { flex:1; height:4px; background:#1a2a40; border-radius:2px; }
+.bo-bar-fill { height:100%; border-radius:2px; background:linear-gradient(90deg,#7c3aed,#a855f7); transition:width 0.4s; }
+
+/* TRADE TYPE SELECTOR */
+.trade-type-panel { background:#060e1a; border-radius:10px; padding:13px 15px; border:1px solid #1a2a40; }
+.ttp-title { font-size:0.6rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f59e0b; margin-bottom:10px; }
+.trade-types { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; }
+@media(max-width:500px){ .trade-types { grid-template-columns:1fr; } }
+.tt-btn { background:#0d1627; border:1px solid #1a2a40; border-radius:8px; padding:11px 8px; text-align:center; cursor:pointer; transition:all 0.2s; }
+.tt-btn:hover { border-color:#334155; }
+.tt-btn.active-bounce { border-color:#22c55e; background:#0d1a0d; }
+.tt-btn.active-breakout { border-color:#a855f7; background:#0a0412; }
+.tt-btn.active-rotation { border-color:#06b6d4; background:#020e14; }
+.tt-icon { font-size:1.3rem; margin-bottom:4px; }
+.tt-label { font-size:0.6rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#475569; }
+.tt-desc { font-size:0.58rem; color:#334155; margin-top:3px; line-height:1.4; }
+.tt-btn.active-bounce .tt-label { color:#22c55e; }
+.tt-btn.active-breakout .tt-label { color:#a855f7; }
+.tt-btn.active-rotation .tt-label { color:#06b6d4; }
+.trade-type-rules { margin-top:10px; background:#0d1627; border-radius:8px; padding:10px 12px; font-size:0.68rem; color:#475569; line-height:1.6; min-height:40px; }
+
+.section-hdr { font-size:0.65rem; letter-spacing:2px; text-transform:uppercase; color:#334155; margin-bottom:12px; display:flex; align-items:center; gap:8px; max-width:1000px; margin-left:auto; margin-right:auto; }
+.section-hdr::before,.section-hdr::after { content:''; flex:1; height:1px; background:#1a2a40; }
+
 </style>
 </head>
 <body>
 
 <h1>🎯 Jesse Trading v4.0</h1>
-<p class="version">SYSTEM DASHBOARD · BTCC FUTURES · TARGET $100/DAY · 27 ASSETS · 8-BASE + 🐟 FISH + 🐋 MANIPULATION + 📅 WEEKEND</p>
+<p class="version">SYSTEM DASHBOARD · BTCC FUTURES VIP1 · TARGET $100 NET ($112 GROSS) · 41 ASSETS · UPDATED POST ETH LESSON</p>
+
+<!-- SYSTEM CHANGES ALERT -->
+<div class="section-div"><div class="section-hdr" style="color:#22c55e">✅ System Updates — Post ETH Trade Analysis</div></div>
+<div class="alert-banner">
+  <div class="alert-title">✅ JESSE TRADING v4 — UPDATED THRESHOLDS (Post ETH Lesson May 10)</div>
+  <div class="alert-grid">
+    <div class="alert-item changed">
+      <div class="alert-label">RSI Oversold Threshold</div>
+      <div class="alert-old">Old: RSI &lt; 35</div>
+      <div class="alert-new">New: RSI &lt; 30 ✅ Stricter</div>
+    </div>
+    <div class="alert-item changed">
+      <div class="alert-label">RSI Overbought Threshold</div>
+      <div class="alert-old">Old: RSI &gt; 65</div>
+      <div class="alert-new">New: RSI &gt; 70 ✅ Stricter</div>
+    </div>
+    <div class="alert-item changed">
+      <div class="alert-label">BB Lower Band</div>
+      <div class="alert-old">Old: BB position &lt; 30%</div>
+      <div class="alert-new">New: BB position &lt; 20% ✅ Stricter</div>
+    </div>
+    <div class="alert-item changed">
+      <div class="alert-label">BB Upper Band</div>
+      <div class="alert-old">Old: BB position &gt; 70%</div>
+      <div class="alert-new">New: BB position &gt; 80% ✅ Stricter</div>
+    </div>
+    <div class="alert-item changed">
+      <div class="alert-label">News / Catalyst</div>
+      <div class="alert-old">Old: Any news counts</div>
+      <div class="alert-new">New: Must be within 24H ✅</div>
+    </div>
+    <div class="alert-item changed">
+      <div class="alert-label">Oil & Macro (Indicator 8)</div>
+      <div class="alert-old">Old: Neutral counts as point</div>
+      <div class="alert-new">New: Neutral = 0 points ✅</div>
+    </div>
+    <div class="alert-item changed">
+      <div class="alert-label">Minimum R:R After Fees</div>
+      <div class="alert-old">Old: 1.5:1 gross</div>
+      <div class="alert-new">New: 1.6:1 after fees ✅</div>
+    </div>
+    <div class="alert-item changed">
+      <div class="alert-label">Stop Placement</div>
+      <div class="alert-old">Old: Any level</div>
+      <div class="alert-new">New: Never round numbers ✅</div>
+    </div>
+    <div class="alert-item">
+      <div class="alert-label">Chart Confirmation (New Rule 17)</div>
+      <div class="alert-old">Old: Optional</div>
+      <div class="alert-new">New: Required for Top 2 picks ✅</div>
+    </div>
+    <div class="alert-item">
+      <div class="alert-label">BTCC P&L Formula Confirmed</div>
+      <div class="alert-old">Old: Estimated</div>
+      <div class="alert-new">New: Exact — use BTCC real numbers ✅</div>
+    </div>
+  </div>
+</div>
 
 <!-- OIL -->
+<div class="section-div"><div class="section-hdr" style="color:#38bdf8">📊 Step 0A — Market Bias Check (New — Runs Before Everything)</div></div>
+<div class="section-hdr" style="color:#38bdf8">📊 Step 0A — Market Bias Check (NEW — Runs Before Everything)</div>
+
+<div class="bias-panel">
+  <div class="bias-header">
+    <div class="bias-title">📊 MARKET BIAS CHECK <span style="background:#38bdf822;border:1px solid #38bdf855;border-radius:20px;padding:2px 8px;font-size:0.55rem;">RUN BEFORE ANY COIN ANALYSIS</span></div>
+    <div class="bias-result" id="biasResult">⏳ CHECKING...</div>
+  </div>
+
 <div class="section-div"><div class="section-hdr">🛢️ Step 0 — Oil & Macro (Always First)</div></div>
 <div class="oil-bar">
-  <div style="font-size:0.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#f97316;margin-bottom:9px;display:flex;align-items:center;gap:8px;">🛢️ WTI OIL + HORMUZ WATCH</div>
+  <div style="font-size:0.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#f97316;margin-bottom:9px">🛢️ WTI OIL + HORMUZ WATCH</div>
   <div class="oil-grid">
     <div class="oil-stat"><div class="lbl">WTI Price</div><div class="val" style="color:#f97316">$95.42</div></div>
     <div class="oil-stat"><div class="lbl">Brent Price</div><div class="val" style="color:#f97316">$100.10</div></div>
     <div class="oil-stat"><div class="lbl">Hormuz</div><div class="val" style="color:#ef4444;font-size:0.68rem">⚠️ RESTRICTED</div></div>
     <div class="oil-stat"><div class="lbl">Crypto Impact</div><div class="val" id="cryptoImpact" style="color:#f59e0b;font-size:0.68rem">SET BELOW</div></div>
-    <div class="oil-signal" style="grid-column:1/-1">🚨 <strong>LIVE:</strong> Hormuz restricted since Feb 2026. 14M bpd offline. US-Iran deal pending. <strong>Deal → oil dumps → BTC pumps. Fail → risk-off → scalps only.</strong></div>
+    <div class="oil-signal" style="grid-column:1/-1">🚨 <strong>LIVE:</strong> Hormuz restricted since Feb 2026. 14M bpd offline. US-Iran deal pending. <strong>Deal → oil dumps → BTC pumps. Fail → risk-off → scalps only.</strong> Oil neutral = NO point on indicator #8.</div>
   </div>
-  <div style="font-size:0.58rem;color:#475569;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Today's Oil Direction:</div>
+  <div style="font-size:0.58rem;color:#475569;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Today's Oil Direction — Only ALIGNED direction scores indicator #8:</div>
   <div class="oil-btns">
-    <div class="oil-btn" id="oil-bull" onclick="setOil('bull')">🟢 RISING<br><span style="font-size:0.55rem;color:#475569">Risk-off crypto</span></div>
-    <div class="oil-btn" id="oil-flat" onclick="setOil('flat')">🟡 FLAT<br><span style="font-size:0.55rem;color:#475569">Neutral</span></div>
-    <div class="oil-btn" id="oil-bear" onclick="setOil('bear')">🔴 FALLING<br><span style="font-size:0.55rem;color:#475569">Risk-on crypto</span></div>
+    <div class="oil-btn" id="oil-bull" onclick="setOil('bull')">🟢 RISING<br><span style="font-size:0.55rem;color:#475569">Risk-off crypto ← #8 scores SHORT</span></div>
+    <div class="oil-btn" id="oil-flat" onclick="setOil('flat')">🟡 FLAT<br><span style="font-size:0.55rem;color:#ef4444">NEUTRAL = 0 POINTS</span></div>
+    <div class="oil-btn" id="oil-bear" onclick="setOil('bear')">🔴 FALLING<br><span style="font-size:0.55rem;color:#475569">Risk-on crypto ← #8 scores LONG</span></div>
   </div>
-  <div class="oil-impact" id="oilImpact">👆 Set oil direction</div>
+  <div class="oil-impact" id="oilImpact">👆 Set oil direction — Neutral oil does NOT count toward score</div>
 </div>
 
 <!-- WEEKEND -->
-<div class="section-div"><div class="section-hdr weekend-hdr">📅 Step 0B — Weekend Risk Check <span class="badge badge-weekend">NEW v4</span></div></div>
+<div class="section-div"><div class="section-hdr weekend-hdr">📅 Step 0B — Weekend Risk Check</div></div>
 <div class="weekend-panel">
-  <div style="font-size:0.63rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#f59e0b;margin-bottom:12px;display:flex;align-items:center;gap:8px;">📅 WEEKEND MANIPULATION FILTER <span style="background:#f59e0b22;border:1px solid #f59e0b55;border-radius:20px;padding:2px 8px;font-size:0.56rem;">SATURDAY & SUNDAY ONLY — SKIP ON WEEKDAYS</span></div>
-
+  <div style="font-size:0.63rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#f59e0b;margin-bottom:12px">📅 WEEKEND MANIPULATION FILTER — SAT & SUN ONLY</div>
   <div class="weekend-score-bar">
     <div class="ws-num" id="weekendScoreNum" style="color:#334155">0<span style="font-size:0.9rem;color:#334155">/5</span></div>
     <div class="ws-right">
@@ -273,46 +457,29 @@ h1 { text-align: center; font-size: 1.2rem; letter-spacing: 3px; color: #38bdf8;
       <div class="ws-bar-wrap"><div class="ws-bar-fill" id="weekendBar" style="width:0%"></div></div>
     </div>
   </div>
-
   <div class="weekend-grid">
-    <div class="weekend-item" onclick="toggleWeekend(this)">
-      <div class="wi-label">① Volume &lt; 60% of Avg</div>
-      <div class="wi-desc">Current volume is less than 60% of the 7-day same-time average. Thin market = easy to manipulate. Flag if yes.</div>
-    </div>
-    <div class="weekend-item" onclick="toggleWeekend(this)">
-      <div class="wi-label">② Wick > 2× Body (Last 4H)</div>
-      <div class="wi-desc">Last 4H candle has a wick more than twice the body size. Long wicks = stop hunts in progress. Flag if yes.</div>
-    </div>
-    <div class="weekend-item" onclick="toggleWeekend(this)">
-      <div class="wi-label">③ Sell/Buy Ratio > 55/45</div>
-      <div class="wi-desc">Sell trades outnumber buy trades by more than 55/45 split. Dominant sell pressure on weekend = bear trap risk.</div>
-    </div>
-    <div class="weekend-item" onclick="toggleWeekend(this)">
-      <div class="wi-label">④ BTC Ranging / No Direction</div>
-      <div class="wi-desc">BTC has moved less than 0.8% in last 4H. No BTC direction = altcoins get chopped both ways by manipulation.</div>
-    </div>
-    <div class="weekend-item" onclick="toggleWeekend(this)">
-      <div class="wi-label">⑤ Sunday Night (8PM+ DR Time)</div>
-      <div class="wi-desc">Trading after 8PM Dominican time on Sunday. Asian open = highest manipulation window of the week. Extra caution.</div>
-    </div>
+    <div class="weekend-item" onclick="toggleWeekend(this)"><div class="wi-label">① Volume &lt; 60% of Avg</div><div class="wi-desc">Thin market = easy to manipulate</div></div>
+    <div class="weekend-item" onclick="toggleWeekend(this)"><div class="wi-label">② Wick &gt; 2× Body (Last 4H)</div><div class="wi-desc">Stop hunts in progress</div></div>
+    <div class="weekend-item" onclick="toggleWeekend(this)"><div class="wi-label">③ Sell/Buy Ratio &gt; 55/45</div><div class="wi-desc">Dominant sell pressure</div></div>
+    <div class="weekend-item" onclick="toggleWeekend(this)"><div class="wi-label">④ BTC Ranging / No Direction</div><div class="wi-desc">BTC moved &lt; 0.8% in last 4H</div></div>
+    <div class="weekend-item" onclick="toggleWeekend(this)"><div class="wi-label">⑤ Sunday Night (8PM+ DR)</div><div class="wi-desc">Asian open = highest manipulation window</div></div>
   </div>
-
   <div class="weekend-rules">
-    <div class="wr-title">📋 Weekend Rules — Applied When ≥2 Flags Active</div>
-    <div class="wr-row"><span class="wr-num">W1</span>Extra confluence required: 6/8 minimum base score (vs 5/8 weekday)</div>
-    <div class="wr-row"><span class="wr-num">W2</span>Widen stops by 0.5–1% to survive manipulation wicks</div>
-    <div class="wr-row"><span class="wr-num">W3</span>Maximum 20x leverage — no 31x on weekends</div>
-    <div class="wr-row"><span class="wr-num">W4</span>Take TP1 earlier — weekend pumps stall faster than weekday moves</div>
-    <div class="wr-row"><span class="wr-num">W5</span>Sunday 8PM DR time alarm — be at screen for Asian open</div>
-    <div class="wr-row"><span class="wr-num">W6</span>If 4+ flags active — sit out. No new trades today.</div>
+    <div class="wr-title">📋 Weekend Rules</div>
+    <div class="wr-row"><span class="wr-num">W1</span>6/8 minimum base score (vs 5/8 weekday)</div>
+    <div class="wr-row"><span class="wr-num">W2</span>Widen stops 0.5–1% — manipulation wicks</div>
+    <div class="wr-row"><span class="wr-num">W3</span>Maximum 20x leverage — no 31x weekends</div>
+    <div class="wr-row"><span class="wr-num">W4</span>Take TP1 earlier — weekend pumps stall faster</div>
+    <div class="wr-row"><span class="wr-num">W5</span>Sunday 8PM DR alarm — Asian open watch</div>
+    <div class="wr-row"><span class="wr-num">W6</span>4+ flags = sit out today</div>
+    <div class="wr-row"><span class="wr-num">W7</span>Never tighten stops INTO key technical levels — stop hunt territory (SUI lesson)</div>
   </div>
 </div>
 
-<!-- MANIPULATION SCANNER -->
-<div class="section-div"><div class="section-hdr manip-hdr">🐋 Step 0C — Manipulation Scanner <span class="badge badge-manip">NEW v4</span></div></div>
+<!-- MANIPULATION -->
+<div class="section-div"><div class="section-hdr manip-hdr">🐋 Step 0C — Manipulation Scanner</div></div>
 <div class="manip-panel">
-  <div style="font-size:0.63rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#ec4899;margin-bottom:12px;">🐋 MANIPULATION RISK SCANNER — RUN ON EVERY TRADE</div>
-
+  <div style="font-size:0.63rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#ec4899;margin-bottom:12px">🐋 MANIPULATION RISK SCANNER — EVERY TRADE</div>
   <div class="manip-score-bar">
     <div class="ms-num" id="manipScoreNum" style="color:#334155">0<span style="font-size:0.9rem;color:#334155">/5</span></div>
     <div class="ms-right">
@@ -321,59 +488,14 @@ h1 { text-align: center; font-size: 1.2rem; letter-spacing: 3px; color: #38bdf8;
       <div class="ms-bar-wrap"><div class="ms-bar-fill" id="manipBar" style="width:0%"></div></div>
     </div>
   </div>
-
   <div class="manip-grid">
-    <div class="manip-item" id="manip0">
-      <div class="mi-label">① Volume Anomaly</div>
-      <div class="mi-desc">Compare current volume to 7-day average at same time. &lt;50%=thin, normal=green, >200%=suspicious spike</div>
-      <div class="manip-btns">
-        <div class="flag-btn r" onclick="setManip(0,'red')">🔴 Thin/Spike</div>
-        <div class="flag-btn y" onclick="setManip(0,'yellow')">🟡 Slightly Off</div>
-        <div class="flag-btn g" onclick="setManip(0,'green')">🟢 Normal</div>
-      </div>
-    </div>
-    <div class="manip-item" id="manip1">
-      <div class="mi-label">② Wick/Body Ratio</div>
-      <div class="mi-desc">Check last 4H candle. Wick >2× body = stop hunt in progress. Long lower wick at support = classic manipulation.</div>
-      <div class="manip-btns">
-        <div class="flag-btn r" onclick="setManip(1,'red')">🔴 Long Wicks</div>
-        <div class="flag-btn y" onclick="setManip(1,'yellow')">🟡 Some Wicks</div>
-        <div class="flag-btn g" onclick="setManip(1,'green')">🟢 Clean Candles</div>
-      </div>
-    </div>
-    <div class="manip-item" id="manip2">
-      <div class="mi-label">③ CVD Divergence</div>
-      <div class="mi-desc">Price up but sell volume dominates = fake pump. Price down but buy volume dominates = fake dump/stop hunt.</div>
-      <div class="manip-btns">
-        <div class="flag-btn r" onclick="setManip(2,'red')">🔴 Diverging</div>
-        <div class="flag-btn y" onclick="setManip(2,'yellow')">🟡 Slight Div</div>
-        <div class="flag-btn g" onclick="setManip(2,'green')">🟢 Aligned</div>
-      </div>
-    </div>
-    <div class="manip-item" id="manip3">
-      <div class="mi-label">④ Order Book Depth</div>
-      <div class="mi-desc">Large walls appearing/disappearing = spoofing. Stacked bids just below stop = liquidity hunt. Thin book = easy move.</div>
-      <div class="manip-btns">
-        <div class="flag-btn r" onclick="setManip(3,'red')">🔴 Walls/Thin</div>
-        <div class="flag-btn y" onclick="setManip(3,'yellow')">🟡 Some Concern</div>
-        <div class="flag-btn g" onclick="setManip(3,'green')">🟢 Healthy Book</div>
-      </div>
-    </div>
-    <div class="manip-item" id="manip4">
-      <div class="mi-label">⑤ Open Interest vs Price</div>
-      <div class="mi-desc">OI drops + price moves = stop cascade. OI rises + price moves = organic. OI flat + price moves = low conviction.</div>
-      <div class="manip-btns">
-        <div class="flag-btn r" onclick="setManip(4,'red')">🔴 OI Drop</div>
-        <div class="flag-btn y" onclick="setManip(4,'yellow')">🟡 OI Flat</div>
-        <div class="flag-btn g" onclick="setManip(4,'green')">🟢 OI Rising</div>
-      </div>
-    </div>
-    <div style="background:#060e1a;border-radius:8px;padding:9px 11px;border:1px solid #ec489933;">
-      <div class="mi-label" style="color:#ec4899;margin-bottom:6px;">🐋 Action Required</div>
-      <div id="manipAction" style="font-size:0.68rem;color:#475569;line-height:1.5;">Score all 5 indicators to see recommended action</div>
-    </div>
+    <div class="manip-item" id="manip0"><div class="mi-label">① Volume Anomaly</div><div class="mi-desc">&lt;50%=thin, &gt;200%=suspicious spike vs 7-day avg</div><div class="manip-btns"><div class="flag-btn r" onclick="setManip(0,'red')">🔴 Bad</div><div class="flag-btn y" onclick="setManip(0,'yellow')">🟡 Off</div><div class="flag-btn g" onclick="setManip(0,'green')">🟢 OK</div></div></div>
+    <div class="manip-item" id="manip1"><div class="mi-label">② Wick/Body Ratio</div><div class="mi-desc">Wick &gt;2× body = stop hunt. Long lower wick = classic manipulation</div><div class="manip-btns"><div class="flag-btn r" onclick="setManip(1,'red')">🔴 Wicks</div><div class="flag-btn y" onclick="setManip(1,'yellow')">🟡 Some</div><div class="flag-btn g" onclick="setManip(1,'green')">🟢 Clean</div></div></div>
+    <div class="manip-item" id="manip2"><div class="mi-label">③ CVD Divergence</div><div class="mi-desc">Price up but sell vol dominates = fake pump</div><div class="manip-btns"><div class="flag-btn r" onclick="setManip(2,'red')">🔴 Div</div><div class="flag-btn y" onclick="setManip(2,'yellow')">🟡 Slight</div><div class="flag-btn g" onclick="setManip(2,'green')">🟢 Aligned</div></div></div>
+    <div class="manip-item" id="manip3"><div class="mi-label">④ Order Book Depth</div><div class="mi-desc">Walls appearing/disappearing = spoofing. Stacked bids below stop = liquidity hunt</div><div class="manip-btns"><div class="flag-btn r" onclick="setManip(3,'red')">🔴 Walls</div><div class="flag-btn y" onclick="setManip(3,'yellow')">🟡 Thin</div><div class="flag-btn g" onclick="setManip(3,'green')">🟢 Healthy</div></div></div>
+    <div class="manip-item" id="manip4"><div class="mi-label">⑤ Open Interest vs Price</div><div class="mi-desc">OI drops + price moves = stop cascade. OI rises = organic</div><div class="manip-btns"><div class="flag-btn r" onclick="setManip(4,'red')">🔴 Drop</div><div class="flag-btn y" onclick="setManip(4,'yellow')">🟡 Flat</div><div class="flag-btn g" onclick="setManip(4,'green')">🟢 Rising</div></div></div>
+    <div style="background:#060e1a;border-radius:8px;padding:9px 11px;border:1px solid #ec489933"><div class="mi-label" style="color:#ec4899;margin-bottom:6px">🐋 Action Required</div><div id="manipAction" style="font-size:0.68rem;color:#475569;line-height:1.5">Score all 5 to see action</div></div>
   </div>
-
   <div class="manip-combined">
     <div class="mc-box"><div class="mc-lbl">Red Flags</div><div class="mc-val" id="manipRed" style="color:#ef4444">0</div></div>
     <div class="mc-box"><div class="mc-lbl">Yellow Flags</div><div class="mc-val" id="manipYellow" style="color:#f59e0b">0</div></div>
@@ -386,7 +508,7 @@ h1 { text-align: center; font-size: 1.2rem; letter-spacing: 3px; color: #38bdf8;
 <div class="card-full">
   <div class="card-title"><div class="dot blue"></div>BTC Market Mode</div>
   <div class="mode-btns">
-    <div class="mode-btn" id="mode-trend" onclick="setMode('trend')"><div class="mode-icon">🟢</div><div class="mode-label">Trending</div><div class="mode-sub">BTC >1% move</div><div class="mode-sub">Momentum ok</div></div>
+    <div class="mode-btn" id="mode-trend" onclick="setMode('trend')"><div class="mode-icon">🟢</div><div class="mode-label">Trending</div><div class="mode-sub">BTC &gt;1% move</div><div class="mode-sub">Momentum ok</div></div>
     <div class="mode-btn" id="mode-range" onclick="setMode('range')"><div class="mode-icon">🟡</div><div class="mode-label">Ranging</div><div class="mode-sub">BTC flat/chop</div><div class="mode-sub">Scalps only</div></div>
     <div class="mode-btn" id="mode-volatile" onclick="setMode('volatile')"><div class="mode-icon">🔴</div><div class="mode-label">Volatile</div><div class="mode-sub">BTC swinging</div><div class="mode-sub">Sit out/fade</div></div>
   </div>
@@ -399,45 +521,51 @@ h1 { text-align: center; font-size: 1.2rem; letter-spacing: 3px; color: #38bdf8;
   <div class="card">
     <div class="card-title"><div class="dot green"></div>Morning Checklist <button class="reset-btn" onclick="resetChecklist()">Reset</button></div>
     <ul class="checklist" id="checklist">
-      <li onclick="toggleCheck(this)"><div class="checkbox"><span class="checkmark">✓</span></div>🛢️ Check WTI oil & Hormuz news</li>
-      <li onclick="toggleCheck(this)"><div class="checkbox"><span class="checkmark">✓</span></div>Set oil direction — bull/flat/bear</li>
+      <li onclick="toggleCheck(this)"><div class="checkbox"><span class="checkmark">✓</span></div>🛢️ Check WTI oil & Hormuz news first</li>
+      <li onclick="toggleCheck(this)"><div class="checkbox"><span class="checkmark">✓</span></div>Set oil direction — only aligned scores indicator #8</li>
       <li onclick="toggleCheck(this)" class="weekend-cl"><div class="checkbox"><span class="checkmark">✓</span></div>📅 Run weekend check if Sat or Sun</li>
       <li onclick="toggleCheck(this)" class="weekend-cl"><div class="checkbox"><span class="checkmark">✓</span></div>📅 Count weekend flags — 4+ = sit out</li>
-      <li onclick="toggleCheck(this)"><div class="checkbox"><span class="checkmark">✓</span></div>Crypto news sweep — any catalysts?</li>
+      <li onclick="toggleCheck(this)"><div class="checkbox"><span class="checkmark">✓</span></div>Crypto news sweep — within 24H only counts</li>
       <li onclick="toggleCheck(this)"><div class="checkbox"><span class="checkmark">✓</span></div>Check BTC direction — set market mode</li>
       <li onclick="toggleCheck(this)"><div class="checkbox"><span class="checkmark">✓</span></div>Scan Tier 1 crypto (11 coins)</li>
-      <li onclick="toggleCheck(this)"><div class="checkbox"><span class="checkmark">✓</span></div>Scan Tier 2 crypto (13 coins)</li>
+      <li onclick="toggleCheck(this)"><div class="checkbox"><span class="checkmark">✓</span></div>Scan Tier 2 crypto (19 coins)</li>
+      <li onclick="toggleCheck(this)"><div class="checkbox"><span class="checkmark">✓</span></div>Scan Tier 3 meme coins (8 coins)</li>
       <li onclick="toggleCheck(this)"><div class="checkbox"><span class="checkmark">✓</span></div>Check Gold, Silver & WTI Oil setups</li>
-      <li onclick="toggleCheck(this)"><div class="checkbox"><span class="checkmark">✓</span></div>Score top setup — 5/8 min (6/8 weekend)</li>
-      <li onclick="toggleCheck(this)" class="manip-cl"><div class="checkbox"><span class="checkmark">✓</span></div>🐋 Run manipulation scanner on setup</div></li>
-      <li onclick="toggleCheck(this)" class="manip-cl"><div class="checkbox"><span class="checkmark">✓</span></div>🐋 0–1 red flags = ok. 2 = reduce size. 3+ = skip</li>
+      <li onclick="toggleCheck(this)"><div class="checkbox"><span class="checkmark">✓</span></div>Score top setup — 5/8 min weekday / 6/8 weekend</li>
+      <li onclick="toggleCheck(this)" class="fix-cl"><div class="checkbox"><span class="checkmark">✓</span></div>✅ Confirm RSI truly &lt;30 or &gt;70 — not borderline</li>
+      <li onclick="toggleCheck(this)" class="fix-cl"><div class="checkbox"><span class="checkmark">✓</span></div>✅ Confirm BB truly &lt;20% or &gt;80% — not mid range</li>
+      <li onclick="toggleCheck(this)" class="fix-cl"><div class="checkbox"><span class="checkmark">✓</span></div>✅ R:R calculated AFTER fees — must be &gt;1.6:1</li>
+      <li onclick="toggleCheck(this)" class="fix-cl"><div class="checkbox"><span class="checkmark">✓</span></div>✅ Stop NOT at a round number — offset by $2-5</li>
+      <li onclick="toggleCheck(this)" class="fix-cl"><div class="checkbox"><span class="checkmark">✓</span></div>✅ Upload TradingView chart — visual confirmation required</li>
+      <li onclick="toggleCheck(this)" class="manip-cl"><div class="checkbox"><span class="checkmark">✓</span></div>🐋 Run manipulation scanner on setup</li>
+      <li onclick="toggleCheck(this)" class="manip-cl"><div class="checkbox"><span class="checkmark">✓</span></div>🐋 0–1 red = ok. 2 = reduce size. 3+ = skip</li>
       <li onclick="toggleCheck(this)" class="fish-cl"><div class="checkbox"><span class="checkmark">✓</span></div>🐟 Run Fish Check if base score ≥ 5/8</li>
-      <li onclick="toggleCheck(this)" class="fish-cl"><div class="checkbox"><span class="checkmark">✓</span></div>🐟 Fib level within 0.5% confirmed</li>
-      <li onclick="toggleCheck(this)" class="fish-cl"><div class="checkbox"><span class="checkmark">✓</span></div>🐟 StochRSI crossover on 1H confirmed</li>
-      <li onclick="toggleCheck(this)" class="fish-cl"><div class="checkbox"><span class="checkmark">✓</span></div>🐟 4H bias direction confirmed</li>
+      <li onclick="toggleCheck(this)" class="fish-cl"><div class="checkbox"><span class="checkmark">✓</span></div>🐟 Fib level within 0.5% confirmed on chart</li>
+      <li onclick="toggleCheck(this)" class="fish-cl"><div class="checkbox"><span class="checkmark">✓</span></div>🐟 StochRSI crossover confirmed on chart</li>
       <li onclick="toggleCheck(this)"><div class="checkbox"><span class="checkmark">✓</span></div>Set leverage per combined score</li>
       <li onclick="toggleCheck(this)"><div class="checkbox"><span class="checkmark">✓</span></div>Set TP1, TP2, SL before entering</li>
+      <li onclick="toggleCheck(this)"><div class="checkbox"><span class="checkmark">✓</span></div>Use LIMIT order — maker fee 0.02% saves $4+ per trade</li>
       <li onclick="toggleCheck(this)"><div class="checkbox"><span class="checkmark">✓</span></div>Max 2 trades open — no exceptions</li>
-      <li onclick="toggleCheck(this)"><div class="checkbox"><span class="checkmark">✓</span></div>$100 target hit = STOP for the day ✋</li>
+      <li onclick="toggleCheck(this)"><div class="checkbox"><span class="checkmark">✓</span></div>$100 NET hit ($112 gross) = STOP for the day ✋</li>
     </ul>
   </div>
 
   <div class="card">
-    <div class="card-title"><div class="dot purple"></div>Base Confluence <span class="badge badge-new">8-PT</span></div>
+    <div class="card-title"><div class="dot purple"></div>Base Confluence Scorer <span class="badge badge-fix">UPDATED</span></div>
     <div class="score-display">
       <div class="score-num" id="scoreNum" style="color:#475569">0</div>
       <div class="score-label">out of 8</div>
       <div class="score-verdict" id="scoreVerdict" style="color:#475569">Select indicators</div>
     </div>
     <div class="conf-grid">
-      <div class="conf-item" onclick="toggleConf(this)"><div class="conf-label">① RSI(14)</div><div class="conf-value">Oversold &lt;35 or OB &gt;65</div></div>
-      <div class="conf-item" onclick="toggleConf(this)"><div class="conf-label">② Bollinger Bands</div><div class="conf-value">Price at upper or lower band</div></div>
-      <div class="conf-item" onclick="toggleConf(this)"><div class="conf-label">③ MACD Histogram</div><div class="conf-value">Turning / divergence</div></div>
-      <div class="conf-item" onclick="toggleConf(this)"><div class="conf-label">④ Support/Resistance</div><div class="conf-value">Price at key S/R level</div></div>
-      <div class="conf-item" onclick="toggleConf(this)"><div class="conf-label">⑤ Volume</div><div class="conf-value">Confirms move direction</div></div>
+      <div class="conf-item" onclick="toggleConf(this)"><div class="conf-label">① RSI(14)</div><div class="conf-value" style="color:#ef4444">Oversold &lt;30 or OB &gt;70 ← STRICT</div></div>
+      <div class="conf-item" onclick="toggleConf(this)"><div class="conf-label">② Bollinger Bands</div><div class="conf-value" style="color:#ef4444">BB &lt;20% lower or &gt;80% upper ← STRICT</div></div>
+      <div class="conf-item" onclick="toggleConf(this)"><div class="conf-label">③ MACD Histogram</div><div class="conf-value">Turning / clear divergence</div></div>
+      <div class="conf-item" onclick="toggleConf(this)"><div class="conf-label">④ Support/Resistance</div><div class="conf-value">Price at confirmed S/R level</div></div>
+      <div class="conf-item" onclick="toggleConf(this)"><div class="conf-label">⑤ Volume</div><div class="conf-value">Clearly confirms move direction</div></div>
       <div class="conf-item" onclick="toggleConf(this)"><div class="conf-label">⑥ Candle Structure</div><div class="conf-value">15M confirmation candle</div></div>
-      <div class="conf-item" onclick="toggleConf(this)"><div class="conf-label">⑦ News / Catalyst</div><div class="conf-value">Fundamental backing</div></div>
-      <div class="conf-item oil-item" onclick="toggleConf(this)"><div class="conf-label">⑧ 🛢️ Oil & Macro</div><div class="conf-value">Oil + crypto aligned</div></div>
+      <div class="conf-item" onclick="toggleConf(this)"><div class="conf-label">⑦ News / Catalyst</div><div class="conf-value" style="color:#ef4444">Within 24H only ← STRICT</div></div>
+      <div class="conf-item oil-item" onclick="toggleConf(this)"><div class="conf-label">⑧ 🛢️ Oil & Macro</div><div class="conf-value" style="color:#ef4444">Aligned only — Neutral = 0 pts ← STRICT</div></div>
     </div>
     <div class="lev-display">
       <div style="font-size:0.56rem;color:#475569;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px">Max Leverage</div>
@@ -447,10 +575,10 @@ h1 { text-align: center; font-size: 1.2rem; letter-spacing: 3px; color: #38bdf8;
   </div>
 </div>
 
-<!-- FISH CHECK -->
+<!-- FISH -->
 <div class="section-div"><div class="section-hdr fish-hdr">🐟 The Fish Check — Bonus Confluence</div></div>
 <div class="fish-panel">
-  <div style="font-size:0.63rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#06b6d4;margin-bottom:11px;">🐟 THE FISH CHECK <span style="background:#06b6d422;border:1px solid #06b6d455;border-radius:20px;padding:2px 8px;font-size:0.55rem;">RUN AFTER BASE SCORE ≥ 5/8</span></div>
+  <div style="font-size:0.63rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#06b6d4;margin-bottom:11px">🐟 THE FISH CHECK <span style="background:#06b6d422;border:1px solid #06b6d455;border-radius:20px;padding:2px 8px;font-size:0.55rem;">RUN AFTER BASE ≥ 5/8 — CHART CONFIRMATION REQUIRED</span></div>
   <div class="fish-score-bar">
     <div class="fs-num" id="fishScoreNum">0<span style="font-size:0.9rem;color:#334155">/6</span></div>
     <div class="fs-right">
@@ -460,15 +588,15 @@ h1 { text-align: center; font-size: 1.2rem; letter-spacing: 3px; color: #38bdf8;
     </div>
   </div>
   <div class="fish-grid">
-    <div class="fish-item" onclick="toggleFish(this)"><div class="fi-label">① Fib Level — within 0.5%</div><div class="fi-desc">Price at 78.6%, 61.8%, or 50% retracement of last major swing. Retracements only.</div></div>
-    <div class="fish-item" onclick="toggleFish(this)"><div class="fi-label">② Swing Range ≥ 3× ATR(14)</div><div class="fi-desc">High-to-low swing range is at least 3× the 14-period ATR. Rejects micro-swings.</div></div>
-    <div class="fish-item" onclick="toggleFish(this)"><div class="fi-label">③ StochRSI Cross on 1H</div><div class="fi-desc">Long: %K above %D, %K &lt;60. Short: %K below %D, %K &gt;40.</div></div>
-    <div class="fish-item" onclick="toggleFish(this)"><div class="fi-label">④ 4H StochRSI Bias</div><div class="fi-desc">4H %K &gt; %D = longs only. 4H %K &lt; %D = shorts only.</div></div>
-    <div class="fish-item" onclick="toggleFish(this)"><div class="fi-label">⑤ 1H FVG at Fib Zone</div><div class="fi-desc">Fair Value Gap on 1H overlapping the Fib entry zone within 1%.</div></div>
-    <div class="fish-item" onclick="toggleFish(this)"><div class="fi-label">⑥ R:R Minimum 1.5:1</div><div class="fi-desc">TP distance ÷ stop distance &gt;1.5. Stop at next Fib level.</div></div>
+    <div class="fish-item" onclick="toggleFish(this)"><div class="fi-label">① Fib Level — within 0.5% on chart</div><div class="fi-desc">Price at 78.6%, 61.8%, or 50% — confirmed visually on TradingView</div></div>
+    <div class="fish-item" onclick="toggleFish(this)"><div class="fi-label">② Swing Range ≥ 3× ATR(14)</div><div class="fi-desc">High-to-low swing at least 3× the 14-period ATR</div></div>
+    <div class="fish-item" onclick="toggleFish(this)"><div class="fi-label">③ StochRSI Cross 1H — on chart</div><div class="fi-desc">Visually confirmed on TradingView — not estimated from data</div></div>
+    <div class="fish-item" onclick="toggleFish(this)"><div class="fi-label">④ 4H StochRSI Bias</div><div class="fi-desc">4H %K &gt; %D = longs only. 4H %K &lt; %D = shorts only</div></div>
+    <div class="fish-item" onclick="toggleFish(this)"><div class="fi-label">⑤ 1H FVG at Fib Zone</div><div class="fi-desc">Fair Value Gap on 1H overlapping Fib zone within 1%</div></div>
+    <div class="fish-item" onclick="toggleFish(this)"><div class="fi-label">⑥ R:R ≥ 1.6:1 After Fees</div><div class="fi-desc">TP÷SL must exceed 1.6:1 AFTER subtracting VIP1 fees</div></div>
   </div>
   <div class="fish-combined">
-    <div class="fc-title">🎯 Jesse Trading v4 — Full Combined Score</div>
+    <div class="fc-title">🎯 Full Combined Score</div>
     <div class="fc-grid">
       <div class="fc-box"><div class="fc-lbl">Base</div><div class="fc-val" id="combBase" style="color:#38bdf8">0/8</div></div>
       <div class="fc-box"><div class="fc-lbl">🐟 Fish</div><div class="fc-val" id="combFish" style="color:#06b6d4">0/6</div></div>
@@ -476,9 +604,6 @@ h1 { text-align: center; font-size: 1.2rem; letter-spacing: 3px; color: #38bdf8;
       <div class="fc-box"><div class="fc-lbl">🐋 Manip</div><div class="fc-val" id="combManip" style="color:#ec4899">—</div></div>
       <div class="fc-box"><div class="fc-lbl">Max Lev</div><div class="fc-val" id="combLev" style="color:#f59e0b">—</div></div>
     </div>
-  </div>
-  <div style="font-size:0.66rem;color:#334155;font-style:italic;margin-top:9px;padding:7px 9px;background:#020e14;border-radius:6px;border-left:2px solid #06b6d4;line-height:1.5;">
-    🐟 <strong style="color:#06b6d4">Fish Check:</strong> Run after base score ≥ 5/8. Combined 10/14+ = high conviction. 12/14+ = max size. 🐋 <strong style="color:#ec4899">Manipulation:</strong> 0–1 red = ok. 2 red = reduce size by 50%. 3+ red = skip trade.
   </div>
   <button class="reset-btn" style="float:none;width:100%;margin-top:7px" onclick="resetAll()">Reset All Scorers</button>
 </div>
@@ -489,7 +614,7 @@ h1 { text-align: center; font-size: 1.2rem; letter-spacing: 3px; color: #38bdf8;
   <div class="card">
     <div class="card-title"><div class="dot yellow"></div>Log a Trade</div>
     <div class="trade-form">
-      <div class="input-group"><label>Asset</label><input type="text" id="t-coin" placeholder="e.g. ADA or WTI OIL"></div>
+      <div class="input-group"><label>Asset</label><input type="text" id="t-coin" placeholder="e.g. ETH or SUI"></div>
       <div class="input-group"><label>Direction</label><select id="t-dir"><option>LONG</option><option>SHORT</option></select></div>
       <div class="input-group"><label>Entry</label><input type="number" id="t-entry" placeholder="0.00" step="any"></div>
       <div class="input-group"><label>Exit</label><input type="number" id="t-exit" placeholder="0.00" step="any"></div>
@@ -501,21 +626,21 @@ h1 { text-align: center; font-size: 1.2rem; letter-spacing: 3px; color: #38bdf8;
       <div class="input-group"><label>📅 Weekend?</label><select id="t-weekend"><option>No</option><option>Yes</option></select></div>
     </div>
     <div class="input-group" style="margin-bottom:7px"><label>Result</label><select id="t-result"><option value="win">WIN</option><option value="loss">LOSS</option><option value="running">RUNNING</option></select></div>
-    <div class="input-group" style="margin-bottom:7px"><label>P&L ($)</label><input type="number" id="t-pnl" placeholder="e.g. 45.50 or -12.00" step="any"></div>
-    <div class="input-group" style="margin-bottom:9px"><label>Notes</label><textarea class="notes-area" id="t-notes" style="min-height:50px" placeholder="What worked? Manipulation spotted? Weekend issues?"></textarea></div>
+    <div class="input-group" style="margin-bottom:7px"><label>BTCC P&L ($) — use actual number from app</label><input type="number" id="t-pnl" placeholder="e.g. 15.80 or -55.44" step="any"></div>
+    <div class="input-group" style="margin-bottom:9px"><label>Notes / Lesson learned</label><textarea class="notes-area" id="t-notes" style="min-height:50px" placeholder="What worked? Stop placement? Chart confirmed?"></textarea></div>
     <button class="btn btn-green" onclick="addTrade()">+ Log Trade</button>
   </div>
   <div class="card">
     <div class="card-title"><div class="dot cyan"></div>Daily P&L <button class="reset-btn" onclick="resetTrades()">Reset Day</button></div>
     <div class="pnl-display">
       <div class="pnl-num" id="pnlNum" style="color:#475569">$0.00</div>
-      <div class="pnl-target">Daily Target: $100.00</div>
+      <div class="pnl-target">Target: $100 NET ($112 gross) · VIP1 fees included</div>
       <div class="pnl-bar-wrap"><div class="pnl-bar" id="pnlBar" style="width:0%"></div></div>
     </div>
     <div style="overflow-x:auto">
       <table class="trades-table">
-        <thead><tr><th>#</th><th>Asset</th><th>Dir</th><th>Lev</th><th>Base</th><th>🐟</th><th>🐋</th><th>📅</th><th>P&L</th><th>Result</th></tr></thead>
-        <tbody id="tradesBody"><tr><td colspan="10" style="text-align:center;color:#334155;padding:18px">No trades logged today</td></tr></tbody>
+        <thead><tr><th>#</th><th>Asset</th><th>Dir</th><th>Lev</th><th>Base</th><th>🐟</th><th>🐋</th><th>BTCC P&L</th><th>Result</th></tr></thead>
+        <tbody id="tradesBody"><tr><td colspan="9" style="text-align:center;color:#334155;padding:16px">No trades logged today</td></tr></tbody>
       </table>
     </div>
   </div>
@@ -527,82 +652,92 @@ h1 { text-align: center; font-size: 1.2rem; letter-spacing: 3px; color: #38bdf8;
     <div class="card-title"><div class="dot red"></div>Golden Rules — Non Negotiable</div>
     <ul class="rules-list">
       <li class="rule-base"><span class="rule-num">00</span><span style="color:#f97316">🛢️ Check oil & Hormuz FIRST every day.</span></li>
-      <li class="rule-base"><span class="rule-num">01</span>Min 5/8 base confluence (6/8 on weekends).</li>
-      <li class="rule-base"><span class="rule-num">02</span>Maximum 2 trades open at the same time.</li>
+      <li class="rule-base"><span class="rule-num">01</span>Min 5/8 base weekday (6/8 weekends). No exceptions.</li>
+      <li class="rule-base"><span class="rule-num">02</span>Maximum 2 active trades open at same time.</li>
       <li class="rule-base"><span class="rule-num">03</span>Scale leverage to confluence score always.</li>
       <li class="rule-base"><span class="rule-num">04</span>Set TP1 TP2 SL before entering. Never after.</li>
       <li class="rule-base"><span class="rule-num">05</span>Exit 60% at TP1. Move stop to breakeven. Let 40% run.</li>
-      <li class="rule-base"><span class="rule-num">06</span>$100 daily target hit = close laptop. Done.</li>
+      <li class="rule-base"><span class="rule-num">06</span>$100 NET daily target hit = close laptop. Done.</li>
       <li class="rule-base"><span class="rule-num">07</span>Never chase. Missed entry = wait for next setup.</li>
       <li class="rule-base"><span class="rule-num">08</span>No trades 12PM–3PM Dominican time. Lunch lull.</li>
-      <li class="rule-base"><span class="rule-num">09</span>Ranging BTC = scalps only. No swing trades in chop.</li>
+      <li class="rule-base"><span class="rule-num">09</span>Ranging BTC = scalps only. No swings in chop.</li>
       <li class="rule-base"><span class="rule-num">10</span>Oil rising = reduce size. Oil falling = increase conviction.</li>
-      <li class="rule-base"><span class="rule-num">11</span>News catalyst alone never enough. Chart must confirm.</li>
+      <li class="rule-base"><span class="rule-num">11</span>News catalyst within 24H only. Old news = 0 points.</li>
       <li class="rule-base"><span class="rule-num">12</span>Two stopouts in one day = stop. Back tomorrow.</li>
       <li class="rule-base"><span class="rule-num">13</span>Rate every trade. Learn every mistake. Update system.</li>
+      <li class="fee-rule rule-fee"><span class="rule-num">14</span>💡 Always use limit orders — Maker 0.02% vs Taker 0.05%. 2.5× cheaper.</li>
+      <li class="fee-rule rule-fee"><span class="rule-num">15</span>💡 Net target $100 = Gross $112 needed. Factor fees every trade.</li>
+      <li class="fix-rule rule-fix"><span class="rule-num">16</span>✅ Never set stops at round numbers — offset by $2–5. Round numbers = stop hunt targets.</li>
+      <li class="fix-rule rule-fix"><span class="rule-num">17</span>✅ Upload TradingView chart before calling Top 2 picks. Chart beats data score always.</li>
+      <li class="fix-rule rule-fix"><span class="rule-num">18</span>✅ RSI must be truly &lt;30 or &gt;70. BB must be truly &lt;20% or &gt;80%. No borderline counts.</li>
+      <li class="fix-rule rule-fix"><span class="rule-num">19</span>✅ R:R must be 1.6:1 AFTER fees. Calculate net not gross. Below = automatic disqualification.</li>
+      <li class="fix-rule rule-fix"><span class="rule-num">20</span>✅ Oil neutral = 0 points on indicator #8. Only clearly aligned oil counts.</li>
       <li class="fish-rule rule-fish"><span class="rule-num">F1</span>🐟 Fish Check only after base score ≥ 5/8.</li>
       <li class="fish-rule rule-fish"><span class="rule-num">F2</span>🐟 Combined 10/14+ = high conviction. 12/14+ = max size.</li>
-      <li class="fish-rule rule-fish"><span class="rule-num">F3</span>🐟 Fish system max 10x on overnight swings.</li>
-      <li class="fish-rule rule-fish"><span class="rule-num">F4</span>🐟 FVG invalidation = close immediately. No holding.</li>
+      <li class="fish-rule rule-fish"><span class="rule-num">F3</span>🐟 Fish max 10x on overnight swings.</li>
+      <li class="fish-rule rule-fish"><span class="rule-num">F4</span>🐟 FVG invalidation = close immediately.</li>
       <li class="fish-rule rule-fish"><span class="rule-num">F5</span>🐟 +30% leveraged PnL before TP1 = switch to 1.5× ATR trail.</li>
-      <li class="manip-rule rule-manip"><span class="rule-num">M1</span>🐋 Run manipulation scanner on every trade before entry.</li>
-      <li class="manip-rule rule-manip"><span class="rule-num">M2</span>🐋 0–1 red flags = trade normally.</li>
-      <li class="manip-rule rule-manip"><span class="rule-num">M3</span>🐋 2 red flags = reduce size by 50%. Widen stops.</li>
-      <li class="manip-rule rule-manip"><span class="rule-num">M4</span>🐋 3+ red flags = skip this trade entirely.</li>
-      <li class="manip-rule rule-manip"><span class="rule-num">M5</span>🐋 CVD divergence + long wick = exit open trade immediately.</li>
-      <li class="weekend-rule rule-weekend"><span class="rule-num">W1</span>📅 Weekends require 6/8 minimum base score.</li>
-      <li class="weekend-rule rule-weekend"><span class="rule-num">W2</span>📅 Widen stops 0.5–1% on weekends for manipulation wicks.</li>
-      <li class="weekend-rule rule-weekend"><span class="rule-num">W3</span>📅 Maximum 20x leverage on weekends. No 31x.</li>
-      <li class="weekend-rule rule-weekend"><span class="rule-num">W4</span>📅 Take TP1 earlier — weekend pumps stall faster.</li>
-      <li class="weekend-rule rule-weekend"><span class="rule-num">W5</span>📅 Sunday 8PM DR time alarm — Asian open watch.</li>
-      <li class="weekend-rule rule-weekend"><span class="rule-num">W6</span>📅 4+ weekend flags = sit out. No new trades.</li>
+      <li class="manip-rule rule-manip"><span class="rule-num">M1</span>🐋 Run manipulation scanner every trade before entry.</li>
+      <li class="manip-rule rule-manip"><span class="rule-num">M2</span>🐋 0–1 red = trade normally.</li>
+      <li class="manip-rule rule-manip"><span class="rule-num">M3</span>🐋 2 red = reduce size 50%. Widen stops.</li>
+      <li class="manip-rule rule-manip"><span class="rule-num">M4</span>🐋 3+ red = skip trade entirely.</li>
+      <li class="manip-rule rule-manip"><span class="rule-num">M5</span>🐋 CVD divergence + long wick = exit immediately.</li>
+      <li class="weekend-rule rule-weekend"><span class="rule-num">W1</span>📅 Weekends require 6/8 minimum.</li>
+      <li class="weekend-rule rule-weekend"><span class="rule-num">W2</span>📅 Widen stops 0.5–1% weekends.</li>
+      <li class="weekend-rule rule-weekend"><span class="rule-num">W3</span>📅 Max 20x weekends. No 31x.</li>
+      <li class="weekend-rule rule-weekend"><span class="rule-num">W4</span>📅 Take TP1 earlier on weekends.</li>
+      <li class="weekend-rule rule-weekend"><span class="rule-num">W5</span>📅 Sunday 8PM DR alarm.</li>
+      <li class="weekend-rule rule-weekend"><span class="rule-num">W6</span>📅 4+ flags = sit out.</li>
+      <li class="weekend-rule rule-weekend"><span class="rule-num">W7</span>📅 Never tighten stops INTO key technical levels on weekends — SUI lesson.</li>
     </ul>
   </div>
+
   <div class="card">
-    <div class="card-title"><div class="dot yellow"></div>Full Score Reference — v4</div>
-    <div style="font-size:0.58rem;color:#38bdf8;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px">Base System (8pt)</div>
-    <table class="trades-table" style="margin-bottom:11px">
+    <div class="card-title"><div class="dot yellow"></div>Score Reference — Updated</div>
+    <div style="font-size:0.58rem;color:#22c55e;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px">✅ Updated Thresholds</div>
+    <table class="trades-table" style="margin-bottom:10px">
+      <thead><tr><th>Indicator</th><th>OLD</th><th>NEW</th></tr></thead>
+      <tbody>
+        <tr><td>RSI Oversold</td><td style="color:#ef4444">&lt;35</td><td style="color:#22c55e">&lt;30 ✅</td></tr>
+        <tr><td>RSI Overbought</td><td style="color:#ef4444">&gt;65</td><td style="color:#22c55e">&gt;70 ✅</td></tr>
+        <tr><td>BB Lower</td><td style="color:#ef4444">&lt;30%</td><td style="color:#22c55e">&lt;20% ✅</td></tr>
+        <tr><td>BB Upper</td><td style="color:#ef4444">&gt;70%</td><td style="color:#22c55e">&gt;80% ✅</td></tr>
+        <tr><td>News freshness</td><td style="color:#ef4444">Any</td><td style="color:#22c55e">Within 24H ✅</td></tr>
+        <tr><td>Oil neutral</td><td style="color:#ef4444">Counts</td><td style="color:#22c55e">0 points ✅</td></tr>
+        <tr><td>R:R minimum</td><td style="color:#ef4444">1.5:1 gross</td><td style="color:#22c55e">1.6:1 net ✅</td></tr>
+      </tbody>
+    </table>
+    <div style="font-size:0.58rem;color:#38bdf8;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px">Base Score (8pt)</div>
+    <table class="trades-table" style="margin-bottom:10px">
       <thead><tr><th>Score</th><th>Max Lev</th><th>Rating</th></tr></thead>
       <tbody>
         <tr><td style="color:#22c55e">8/8</td><td style="color:#22c55e">31x*</td><td>🔥🔥 Exceptional</td></tr>
-        <tr><td style="color:#22c55e">7/8</td><td style="color:#22c55e">31x*</td><td>🔥 Max Conviction</td></tr>
+        <tr><td style="color:#22c55e">7/8</td><td style="color:#22c55e">31x*</td><td>🔥 Max</td></tr>
         <tr><td style="color:#86efac">6/8</td><td style="color:#86efac">20x</td><td>💪 High</td></tr>
         <tr><td style="color:#f59e0b">5/8</td><td style="color:#f59e0b">10x</td><td>✅ Good</td></tr>
         <tr><td style="color:#ef4444">≤4/8</td><td style="color:#ef4444">NO TRADE</td><td>❌ Skip</td></tr>
       </tbody>
     </table>
-    <div style="font-size:0.58rem;color:#06b6d4;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px">🐟 Fish Combined (14pt)</div>
-    <table class="trades-table" style="margin-bottom:11px">
-      <thead><tr><th>Combined</th><th>Max Lev</th><th>Action</th></tr></thead>
+    <div style="font-size:0.58rem;color:#22d3ee;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px">💡 VIP1 Fee Reference</div>
+    <table class="trades-table" style="margin-bottom:10px">
+      <thead><tr><th>Order</th><th>Fee</th><th>$5K position</th></tr></thead>
       <tbody>
-        <tr><td style="color:#22c55e">12–14</td><td style="color:#22c55e">31x*</td><td>🐟🔥 Max size</td></tr>
-        <tr><td style="color:#86efac">10–11</td><td style="color:#86efac">20x*</td><td>🐟 High conviction</td></tr>
-        <tr><td style="color:#f59e0b">8–9</td><td style="color:#f59e0b">10x</td><td>Good with Fish</td></tr>
+        <tr><td style="color:#22c55e">Limit (Maker)</td><td style="color:#22c55e">0.02%</td><td style="color:#22c55e">-$1.00</td></tr>
+        <tr><td style="color:#f59e0b">Market (Taker)</td><td style="color:#f59e0b">0.05%</td><td style="color:#f59e0b">-$2.50</td></tr>
       </tbody>
     </table>
-    <div style="font-size:0.58rem;color:#ec4899;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px">🐋 Manipulation Override</div>
-    <table class="trades-table" style="margin-bottom:11px">
-      <thead><tr><th>Red Flags</th><th>Action</th><th>Size</th></tr></thead>
-      <tbody>
-        <tr><td style="color:#22c55e">0–1</td><td>Trade normally</td><td style="color:#22c55e">Full size</td></tr>
-        <tr><td style="color:#f59e0b">2</td><td>Caution</td><td style="color:#f59e0b">Half size</td></tr>
-        <tr><td style="color:#ef4444">3+</td><td>Skip trade</td><td style="color:#ef4444">No entry</td></tr>
-      </tbody>
-    </table>
-    <div style="font-size:0.58rem;color:#f59e0b;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px">📅 Weekend Override</div>
-    <table class="trades-table">
-      <thead><tr><th>Flags</th><th>Action</th><th>Max Lev</th></tr></thead>
-      <tbody>
-        <tr><td style="color:#22c55e">0–1</td><td>Normal weekend trade</td><td style="color:#f59e0b">20x max</td></tr>
-        <tr><td style="color:#f59e0b">2–3</td><td>Tight stops, small size</td><td style="color:#f59e0b">10x max</td></tr>
-        <tr><td style="color:#ef4444">4–5</td><td>Sit out today</td><td style="color:#ef4444">No trade</td></tr>
-      </tbody>
-    </table>
-    <div style="font-size:0.58rem;color:#334155;font-style:italic;margin-top:7px">*Weekend max always 20x regardless of score</div>
-    <div style="margin-top:11px;font-size:0.6rem;color:#06b6d4;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px">Asset Universe — 27 Total</div>
+    <div style="font-size:0.58rem;color:#22d3ee;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px">💰 BTCC P&L Formula (Confirmed)</div>
+    <div style="font-size:0.65rem;color:#64748b;background:#060e1a;border-radius:6px;padding:8px;font-family:monospace;line-height:1.8">
+      P&L = (Entry-Exit) × Units<br>
+      - Transaction fee (entry+exit)<br>
+      - Overnight fee (separate line)<br>
+      <span style="color:#22c55e">= BTCC shown number ✅</span>
+    </div>
+    <div style="margin-top:10px;font-size:0.6rem;color:#06b6d4;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px">Asset Universe — 41 Total</div>
     <div style="font-size:0.63rem;color:#64748b;line-height:1.8">
       <div><span style="color:#38bdf8">Tier 1 (11):</span> BTC ETH SOL BNB XRP ADA DOGE AVAX LINK DOT LTC</div>
-      <div><span style="color:#a855f7">Tier 2 (13):</span> ONDO STRK JUP TIA SUI APT INJ PENDLE PYTH SEI WIF ICP TRX</div>
+      <div><span style="color:#a855f7">Tier 2 (19):</span> ONDO STRK JUP TIA SUI APT INJ PENDLE PYTH SEI WIF ICP TRX NEAR UNI KAS FIL STX HBAR</div>
+      <div><span style="color:#ec4899">Tier 3 (8):</span> PEPE FLOKI BONK SHIB THETA AAVE ARB WIF</div>
       <div><span style="color:#f97316">Commodities (3):</span> GOLD · SILVER · WTI OIL</div>
     </div>
   </div>
@@ -610,20 +745,20 @@ h1 { text-align: center; font-size: 1.2rem; letter-spacing: 3px; color: #38bdf8;
 
 <!-- NOTES -->
 <div class="card-full">
-  <div class="card-title"><div class="dot blue"></div>Session Notes — Lessons & Updates</div>
-  <textarea class="notes-area" id="sessionNotes" style="min-height:80px" placeholder="Daily notes, manipulation patterns spotted, weekend lessons, Fish Check observations, system improvements..."></textarea>
+  <div class="card-title"><div class="dot blue"></div>Session Notes — Lessons & System Updates</div>
+  <textarea class="notes-area" id="sessionNotes" style="min-height:90px" placeholder="Daily notes, lessons, system updates...&#10;&#10;May 10 lesson: ETH scored 6/8 but honest re-score was 4/8. RSI was 68 not 70+. BB was 72% not 80%+. R:R was 1.35:1 not 1.6:1. Oil was neutral (0 points). News was stale. Stop at round number $2,341 — hunted to the cent. Visual chart required going forward."></textarea>
   <button class="btn" style="margin-top:9px;max-width:180px" onclick="saveNotes()">Save Notes</button>
   <span id="notesSaved" style="font-size:0.63rem;color:#22c55e;margin-left:9px;display:none">✓ Saved</span>
 </div>
 
-<p class="disclaimer">⚠️ Jesse Trading v4.0 — Educational purposes only. Not financial advice. Crypto trading involves substantial risk of loss. Always manage your own risk.</p>
+<p class="disclaimer">⚠️ Jesse Trading v4.0 — Educational purposes only. Not financial advice. Always manage your own risk.</p>
 
 <script>
 // OIL
 const oilImpacts={
-  bull:{text:'🚨 OIL RISING → RISK-OFF. Reduce sizes. Scalps only. Avoid aggressive longs.',color:'#ef4444'},
-  flat:{text:'🟡 OIL FLAT → Neutral macro. Let crypto charts decide. Normal sizing.',color:'#f59e0b'},
-  bear:{text:'✅ OIL FALLING → RISK-ON. BTC likely rallying. Higher conviction on longs.',color:'#22c55e'}
+  bull:{text:'🚨 OIL RISING → RISK-OFF. Indicator #8 scores only for SHORT setups. Reduce long sizes.',color:'#ef4444'},
+  flat:{text:'🟡 OIL FLAT → NEUTRAL = 0 POINTS on indicator #8. Do not count oil toward score. Trade on technicals only.',color:'#f59e0b'},
+  bear:{text:'✅ OIL FALLING → RISK-ON. Indicator #8 scores only for LONG setups. Higher conviction on longs.',color:'#22c55e'}
 };
 function setOil(dir){
   ['bull','flat','bear'].forEach(d=>document.getElementById('oil-'+d).className='oil-btn');
@@ -631,14 +766,14 @@ function setOil(dir){
   const imp=oilImpacts[dir];
   document.getElementById('oilImpact').textContent=imp.text;
   document.getElementById('oilImpact').style.color=imp.color;
-  document.getElementById('cryptoImpact').textContent=dir==='bull'?'RISK-OFF ⚠️':dir==='bear'?'RISK-ON ✅':'NEUTRAL 🟡';
+  document.getElementById('cryptoImpact').textContent=dir==='bull'?'RISK-OFF ⚠️':dir==='bear'?'RISK-ON ✅':'NEUTRAL — 0 pts 🚫';
   document.getElementById('cryptoImpact').style.color=imp.color;
   localStorage.setItem('oilDir',dir);
 }
 
 // WEEKEND
 let weekendScore=0;
-const wVerdicts={0:'No flags — weekend trade ok',1:'1 flag — proceed with caution',2:'2 flags — widen stops, reduce size',3:'3 flags — 10x max, smaller size',4:'4 flags — CONSIDER SITTING OUT',5:'5 flags — SIT OUT TODAY ✋'};
+const wVerdicts={0:'No flags — ok to trade',1:'1 flag — proceed carefully',2:'2 flags — 20x max, widen stops',3:'3 flags — 10x max, small size',4:'4 flags — CONSIDER SITTING OUT',5:'5 flags — SIT OUT TODAY ✋'};
 const wColors={0:'#22c55e',1:'#86efac',2:'#f59e0b',3:'#fb923c',4:'#ef4444',5:'#ef4444'};
 function toggleWeekend(el){
   el.classList.toggle('active');
@@ -653,48 +788,37 @@ function toggleWeekend(el){
 
 // MANIPULATION
 const manipState=[null,null,null,null,null];
-const manipActions={
-  0:'🟢 LOW RISK — Trade normally at full size.',
-  1:'🟡 LOW-MEDIUM — One concern. Trade with normal stops.',
-  2:'🟡 MEDIUM — Two red flags. Reduce position size by 50%. Widen stops by 0.5%.',
-  3:'🔴 HIGH — Three red flags. Skip this trade. Wait for cleaner conditions.',
-  4:'🔴 VERY HIGH — Do not trade. Manipulation likely in progress.',
-  5:'🚨 EXTREME — Severe manipulation detected. Sit out completely.'
-};
+const manipActions={0:'🟢 LOW RISK — Trade normally.',1:'🟡 One concern. Trade carefully.',2:'🟡 MEDIUM — Reduce size 50%. Widen stops.',3:'🔴 HIGH — Skip this trade.',4:'🔴 VERY HIGH — Do not trade.',5:'🚨 EXTREME — Sit out.'};
 function setManip(idx,flag){
   manipState[idx]=flag;
   const el=document.getElementById('manip'+idx);
   el.className='manip-item';
-  if(flag==='red') el.classList.add('red-flag');
-  else if(flag==='yellow') el.classList.add('yellow-flag');
-  else if(flag==='green') el.classList.add('green-flag');
-  // update buttons
+  if(flag==='red')el.classList.add('red-flag');
+  else if(flag==='yellow')el.classList.add('yellow-flag');
+  else if(flag==='green')el.classList.add('green-flag');
   el.querySelectorAll('.flag-btn').forEach(b=>b.classList.remove('active'));
   const btns=el.querySelectorAll('.flag-btn');
-  if(flag==='red') btns[0].classList.add('active');
-  else if(flag==='yellow') btns[1].classList.add('active');
+  if(flag==='red')btns[0].classList.add('active');
+  else if(flag==='yellow')btns[1].classList.add('active');
   else btns[2].classList.add('active');
   updateManipScore();
 }
 function updateManipScore(){
   const reds=manipState.filter(s=>s==='red').length;
   const yellows=manipState.filter(s=>s==='yellow').length;
-  const scored=manipState.filter(s=>s!==null).length;
   document.getElementById('manipRed').textContent=reds;
   document.getElementById('manipYellow').textContent=yellows;
   document.getElementById('manipScoreNum').innerHTML=reds+'<span style="font-size:0.9rem;color:#334155">/5</span>';
-  const riskColor=reds>=3?'#ef4444':reds>=2?'#f59e0b':'#22c55e';
-  document.getElementById('manipScoreNum').style.color=riskColor;
-  const riskLabel=reds>=3?'🔴 HIGH':reds>=2?'🟡 MEDIUM':reds>=1?'🟡 LOW-MED':'🟢 LOW';
-  document.getElementById('manipRisk').textContent=riskLabel;
-  document.getElementById('manipRisk').style.color=riskColor;
-  const verdict=reds>=3?'❌ SKIP — 3+ red flags detected':reds>=2?'⚠️ CAUTION — Reduce size 50%':reds>=1?'🟡 Proceed carefully':'🟢 Clean — trade normally';
-  document.getElementById('manipVerdict').textContent=verdict;
-  document.getElementById('manipVerdict').style.color=riskColor;
+  const rc=reds>=3?'#ef4444':reds>=2?'#f59e0b':'#22c55e';
+  document.getElementById('manipScoreNum').style.color=rc;
+  document.getElementById('manipRisk').textContent=reds>=3?'🔴 HIGH':reds>=2?'🟡 MEDIUM':reds>=1?'🟡 LOW-MED':'🟢 LOW';
+  document.getElementById('manipRisk').style.color=rc;
+  document.getElementById('manipVerdict').textContent=reds>=3?'❌ SKIP':reds>=2?'⚠️ Half size':reds>=1?'🟡 Careful':'🟢 Clean';
+  document.getElementById('manipVerdict').style.color=rc;
   document.getElementById('manipBar').style.width=(reds/5*100)+'%';
   document.getElementById('manipBar').style.background=reds>=3?'#ef4444':reds>=2?'#f59e0b':'#22c55e';
   document.getElementById('manipAction').textContent=manipActions[reds]||manipActions[5];
-  document.getElementById('manipAction').style.color=riskColor;
+  document.getElementById('manipAction').style.color=rc;
   updateCombined();
 }
 
@@ -719,11 +843,11 @@ function resetChecklist(){document.querySelectorAll('#checklist li').forEach(li=
 function saveChecklistState(){localStorage.setItem('checklist',JSON.stringify([...document.querySelectorAll('#checklist li')].map(li=>li.classList.contains('checked'))));}
 function loadChecklist(){const s=JSON.parse(localStorage.getItem('checklist')||'[]');document.querySelectorAll('#checklist li').forEach((li,i)=>{if(s[i])li.classList.add('checked');});}
 
-// BASE CONFLUENCE
+// BASE CONFLUENCE — Updated thresholds
 let confScore=0;
 const levMap={8:'31x',7:'31x',6:'20x',5:'10x',4:'5x',3:'NO TRADE',2:'NO TRADE',1:'NO TRADE',0:'—'};
 const levColor={8:'#22c55e',7:'#22c55e',6:'#86efac',5:'#f59e0b',4:'#fb923c',3:'#ef4444',2:'#ef4444',1:'#ef4444',0:'#475569'};
-const verdicts={8:'🔥🔥 EXCEPTIONAL',7:'🔥 MAX CONVICTION',6:'💪 HIGH CONVICTION',5:'✅ GOOD SETUP',4:'🟡 BORDERLINE',3:'❌ SKIP',2:'❌ SKIP',1:'❌ SKIP',0:'Select indicators'};
+const verdicts={8:'🔥🔥 EXCEPTIONAL — Full size',7:'🔥 MAX CONVICTION',6:'💪 HIGH CONVICTION',5:'✅ GOOD — Smaller size',4:'🟡 BORDERLINE — 5x only',3:'❌ SKIP',2:'❌ SKIP',1:'❌ SKIP',0:'Select indicators above'};
 const vColors={8:'#22c55e',7:'#22c55e',6:'#86efac',5:'#f59e0b',4:'#fb923c',3:'#ef4444',2:'#ef4444',1:'#ef4444',0:'#475569'};
 function toggleConf(el){
   el.classList.toggle('active');
@@ -750,7 +874,7 @@ function resetConf(){
 
 // FISH
 let fishScore=0;
-const fVerdicts={0:'Select conditions',1:'Very weak',2:'Weak — use base only',3:'Partial — some conviction',4:'🐟 Good — adds conviction',5:'🐟🐟 Strong',6:'🐟🐟🐟 Perfect'};
+const fVerdicts={0:'Select conditions',1:'Very weak',2:'Weak',3:'Partial',4:'🐟 Good',5:'🐟🐟 Strong',6:'🐟🐟🐟 Perfect'};
 const fColors={0:'#334155',1:'#ef4444',2:'#ef4444',3:'#f59e0b',4:'#86efac',5:'#22c55e',6:'#4ade80'};
 function toggleFish(el){
   el.classList.toggle('active');
@@ -764,7 +888,7 @@ function toggleFish(el){
 }
 
 function updateCombined(){
-  const base=confScore, fish=fishScore;
+  const base=confScore,fish=fishScore;
   const total=base+fish;
   const reds=manipState.filter(s=>s==='red').length;
   const wFlags=weekendScore;
@@ -774,27 +898,26 @@ function updateCombined(){
   document.getElementById('combManip').textContent=manipLabel;
   document.getElementById('combManip').style.color=reds>=3?'#ef4444':reds>=2?'#f59e0b':'#22c55e';
   let lev='—';
-  // weekend cap
-  const isWeekend=wFlags>=1;
+  const isWknd=wFlags>=1;
   const weekendCap=wFlags>=4?'NO TRADE':wFlags>=2?'10x':'20x';
-  if(reds>=3) lev='NO TRADE';
-  else if(isWeekend){
-    if(total>=12&&weekendCap!=='NO TRADE') lev=weekendCap==='20x'?'20x':weekendCap;
-    else if(total>=10&&weekendCap!=='NO TRADE') lev=weekendCap==='20x'?'20x':'10x';
-    else if(base>=5&&weekendCap!=='NO TRADE') lev='10x';
+  if(reds>=3)lev='NO TRADE';
+  else if(isWknd){
+    if(total>=12&&weekendCap!=='NO TRADE')lev=weekendCap==='20x'?'20x':weekendCap;
+    else if(total>=10&&weekendCap!=='NO TRADE')lev='10x';
+    else if(base>=5&&weekendCap!=='NO TRADE')lev='10x';
     else lev=weekendCap;
-  } else {
-    if(total>=12) lev='31x';
-    else if(total>=10) lev='20x';
-    else if(base>=7) lev='31x';
-    else if(base>=6) lev='20x';
-    else if(base>=5) lev='10x';
+  }else{
+    if(total>=12)lev='31x';
+    else if(total>=10)lev='20x';
+    else if(base>=7)lev='31x';
+    else if(base>=6)lev='20x';
+    else if(base>=5)lev='10x';
   }
   document.getElementById('combLev').textContent=lev;
   document.getElementById('combLev').style.color=lev==='NO TRADE'?'#ef4444':lev==='31x'?'#22c55e':lev==='20x'?'#86efac':'#f59e0b';
 }
 
-// TRADES
+// TRADES — Now uses BTCC actual P&L
 let trades=JSON.parse(localStorage.getItem('trades')||'[]');
 function addTrade(){
   const coin=document.getElementById('t-coin').value.trim().toUpperCase();
@@ -813,22 +936,21 @@ function addTrade(){
     pnl:parseFloat(document.getElementById('t-pnl').value)||0,
     notes:document.getElementById('t-notes').value
   };
-  trades.push(t); localStorage.setItem('trades',JSON.stringify(trades));
-  renderTrades(); clearForm();
+  trades.push(t);localStorage.setItem('trades',JSON.stringify(trades));
+  renderTrades();clearForm();
 }
 function clearForm(){['t-coin','t-entry','t-exit','t-margin','t-lev','t-pnl','t-notes'].forEach(id=>document.getElementById(id).value='');}
 function renderTrades(){
   const tbody=document.getElementById('tradesBody');
-  if(!trades.length){tbody.innerHTML='<tr><td colspan="10" style="text-align:center;color:#334155;padding:16px">No trades logged today</td></tr>';updatePnl(0);return;}
+  if(!trades.length){tbody.innerHTML='<tr><td colspan="9" style="text-align:center;color:#334155;padding:16px">No trades logged today</td></tr>';updatePnl(0);return;}
   let total=0;
   tbody.innerHTML=trades.map((t,i)=>{
     total+=parseFloat(t.pnl)||0;
     const pc=t.result==='win'?'win':t.result==='loss'?'loss':'running';
     const ps=parseFloat(t.pnl)>0?'+':'';
     const manipCell=t.manip?.includes('Low')?'🟢':t.manip?.includes('Med')?'🟡':'🔴';
-    const weekendCell=t.weekend==='Yes'?'📅':'—';
     const fishCell=t.fish&&t.fish!=='—'?`<span style="color:#06b6d4">${t.fish}</span>`:'—';
-    return`<tr><td style="color:#334155">${i+1}</td><td style="color:#e2e8f0;font-weight:700">${t.coin}</td><td style="color:${t.dir==='LONG'?'#22c55e':'#ef4444'}">${t.dir}</td><td style="color:#f59e0b">${t.lev}x</td><td style="color:#a855f7">${t.conf}</td><td>${fishCell}</td><td>${manipCell}</td><td>${weekendCell}</td><td class="${pc}">${ps}$${parseFloat(t.pnl).toFixed(2)}</td><td class="${pc}">${t.result.toUpperCase()}</td></tr>`;
+    return`<tr><td style="color:#334155">${i+1}</td><td style="color:#e2e8f0;font-weight:700">${t.coin}</td><td style="color:${t.dir==='LONG'?'#22c55e':'#ef4444'}">${t.dir}</td><td style="color:#f59e0b">${t.lev}x</td><td style="color:#a855f7">${t.conf}</td><td>${fishCell}</td><td>${manipCell}</td><td class="${pc}">${ps}$${parseFloat(t.pnl).toFixed(2)}</td><td class="${pc}">${t.result.toUpperCase()}</td></tr>`;
   }).join('');
   updatePnl(total);
 }
@@ -852,18 +974,187 @@ function resetAll(){
   document.getElementById('combFish').textContent='0/6';
   updateCombined();
 }
-
 function saveNotes(){
   localStorage.setItem('sessionNotes',document.getElementById('sessionNotes').value);
   const s=document.getElementById('notesSaved');s.style.display='inline';
   setTimeout(()=>s.style.display='none',2000);
 }
 
+// BIAS STATE
+const biasState = Array(6).fill(null);
+const biasLabels = ['BTC.D','TOTAL2','TOTAL3','F&G','ETF','BTC'];
+
+const verdicts = {
+  long: {
+    text: '🟢 LONG BIAS — Look for LONG setups today',
+    strategy: '✅ Strategy: Focus on oversold longs, Fib breakouts, and altcoin rotation plays. BTC.D falling = altseason signal. Look for coins at demand zones or breaking through resistance with volume. SUI, LINK, ADA type moves today.',
+    color: '#22c55e',
+    border: '#22c55e'
+  },
+  short: {
+    text: '🔴 SHORT BIAS — Look for SHORT setups today',
+    strategy: '✅ Strategy: Focus on overbought rejections at supply zones, Fib rejection plays, and fading extended moves. BTC.D rising = BTC taking dominance from alts. Look for weak coins at resistance.',
+    color: '#ef4444',
+    border: '#ef4444'
+  },
+  neutral: {
+    text: '🟡 NEUTRAL — Wait for clearer direction',
+    strategy: '⚠️ Strategy: Mixed signals. Scalps only on the most confirmed setups. Wait for BTC.D and TOTAL2 to pick a direction before committing to swing trades. Reduce size on all entries today.',
+    color: '#f59e0b',
+    border: '#f59e0b'
+  }
+};
+
+function setBias(idx, dir, value, signal) {
+  biasState[idx] = dir;
+  const el = document.getElementById('bias'+idx);
+  el.className = 'bias-indicator ' + (dir === 'bull' ? 'bull' : dir === 'bear' ? 'bear' : '');
+  document.getElementById('bv'+idx).textContent = value;
+  document.getElementById('bs'+idx).textContent = signal;
+  // Update button states
+  const btns = el.querySelectorAll('.bi-btn');
+  btns.forEach(b => b.classList.remove('active'));
+  const btnIdx = dir === 'bull' ? 0 : dir === 'neut' ? 1 : 2;
+  btns[btnIdx].classList.add('active');
+  updateBias();
+  localStorage.setItem('biasState', JSON.stringify(biasState));
+}
+
+function updateBias() {
+  const bulls = biasState.filter(s => s === 'bull').length;
+  const bears = biasState.filter(s => s === 'bear').length;
+  const scored = biasState.filter(s => s !== null).length;
+
+  document.getElementById('bullBar').style.width = (bulls/6*100)+'%';
+  document.getElementById('bearBar').style.width = (bears/6*100)+'%';
+  document.getElementById('bullCount').textContent = bulls+'/6';
+  document.getElementById('bearCount').textContent = bears+'/6';
+
+  let bias = 'neutral';
+  if (bulls >= 4) bias = 'long';
+  else if (bears >= 4) bias = 'short';
+  else if (bulls > bears && bulls >= 3) bias = 'long';
+  else if (bears > bulls && bears >= 3) bias = 'short';
+
+  const v = verdicts[bias];
+  const resultEl = document.getElementById('biasResult');
+  resultEl.textContent = bias === 'long' ? '🟢 LONG BIAS' : bias === 'short' ? '🔴 SHORT BIAS' : '🟡 NEUTRAL';
+  resultEl.className = 'bias-result bias-'+bias;
+
+  const vbox = document.getElementById('biasVerdictBox');
+  vbox.style.borderColor = v.border;
+  document.getElementById('biasVerdictText').textContent = v.text;
+  document.getElementById('biasVerdictText').style.color = v.color;
+  document.getElementById('biasStrategy').textContent = v.strategy;
+
+  // Update rotation detector
+  const btcdBull = biasState[0] === 'bull';
+  const t3Bull = biasState[2] === 'bull';
+  const rotEl = document.getElementById('rotSignal');
+  const rotBTCD = document.getElementById('rotBTCD');
+  const rotT3 = document.getElementById('rotT3');
+
+  rotBTCD.textContent = biasState[0] ? (biasState[0]==='bull'?'▼ Falling':biasState[0]==='bear'?'▲ Rising':'→ Flat') : '—';
+  rotBTCD.style.color = biasState[0]==='bull'?'#22c55e':biasState[0]==='bear'?'#ef4444':'#f59e0b';
+  document.getElementById('rotBTCDs').textContent = biasState[0]==='bull'?'Alts getting fuel':biasState[0]==='bear'?'BTC taking share':'No rotation yet';
+
+  rotT3.textContent = biasState[2] ? (biasState[2]==='bull'?'▲ Rising':biasState[2]==='bear'?'▼ Falling':'→ Flat') : '—';
+  rotT3.style.color = biasState[2]==='bull'?'#22c55e':biasState[2]==='bear'?'#ef4444':'#f59e0b';
+  document.getElementById('rotT3s').textContent = biasState[2]==='bull'?'Small caps leading':'Small caps lagging':'Flat';
+
+  if (btcdBull && t3Bull) {
+    rotEl.textContent = '🚀 ROTATION ON';
+    rotEl.style.color = '#22c55e';
+    document.getElementById('rotStrength').textContent = 'Altseason signal — look for longs';
+    document.getElementById('rotationExplain').textContent = '🚀 ACTIVE ROTATION: BTC.D falling + TOTAL3 rising = money flowing FROM BTC INTO altcoins right now. This is the setup that created the SUI +7.6% move on May 10. Look for alts at demand zones or breaking Fib levels — these are the 5-10% moves. Prioritize LONG setups on Tier 2 coins.';
+    document.getElementById('rotationExplain').style.color = '#86efac';
+  } else if (!btcdBull && biasState[0] === 'bear' && biasState[2] === 'bear') {
+    rotEl.textContent = '🐻 BTC DOMINANT';
+    rotEl.style.color = '#ef4444';
+    document.getElementById('rotStrength').textContent = 'BTC taking all money';
+    document.getElementById('rotationExplain').textContent = 'BTC dominance rising + TOTAL3 falling = money moving FROM alts INTO BTC. Altcoins will underperform or bleed even if BTC is flat. Avoid long setups on Tier 2 and Tier 3 coins today.';
+    document.getElementById('rotationExplain').style.color = '#fca5a5';
+  } else {
+    rotEl.textContent = '🟡 MIXED';
+    rotEl.style.color = '#f59e0b';
+    document.getElementById('rotStrength').textContent = 'No clear rotation';
+    document.getElementById('rotationExplain').textContent = 'Mixed signals on rotation. Watch BTC.D and TOTAL3 together — when BTC.D falls AND TOTAL3 rises simultaneously that is the altcoin rotation signal. Not active right now.';
+    document.getElementById('rotationExplain').style.color = '#475569';
+  }
+
+  localStorage.setItem('marketBias', bias);
+}
+
+// BREAKOUT DETECTOR
+let boScore = 0;
+const boVerdicts = {
+  0: {text:'Select conditions above', action:'—', color:'#334155'},
+  1: {text:'Very weak — likely rejection at Fib', action:'SHORT', color:'#ef4444'},
+  2: {text:'Weak — lean toward rejection', action:'SHORT', color:'#ef4444'},
+  3: {text:'Borderline — wait for volume confirmation', action:'WAIT', color:'#f59e0b'},
+  4: {text:'Moderate breakout probability — watch closely', action:'WATCH', color:'#f59e0b'},
+  5: {text:'Strong breakout signal — look for LONG entry', action:'LONG', color:'#22c55e'},
+  6: {text:'🚀 HIGH CONVICTION BREAKOUT — Max size long on 15M confirmation', action:'LONG MAX', color:'#4ade80'},
+};
+
+function toggleBreakout(el) {
+  el.classList.toggle('active');
+  boScore = document.querySelectorAll('.bo-item.active').length;
+  document.getElementById('boNum').textContent = boScore;
+  document.getElementById('boNum').style.color = boScore >= 5?'#22c55e':boScore>=4?'#86efac':boScore>=3?'#f59e0b':'#ef4444';
+  const v = boVerdicts[boScore];
+  document.getElementById('boVerdict').textContent = v.text;
+  document.getElementById('boVerdict').style.color = v.color;
+  document.getElementById('boBar').style.width = (boScore/6*100)+'%';
+  document.getElementById('boAction').textContent = v.action;
+  document.getElementById('boAction').style.color = v.color;
+}
+
+// TRADE TYPE
+const tradeTypeRules = {
+  bounce: '↩️ BOUNCE/REJECTION RULES: RSI must be truly <30 (long) or >70 (short). BB position <20% or >80%. Price at confirmed S/R level. Stop below/above the zone. TP at next Fib level. Best in ranging or volatile market mode. Works best when market bias is NEUTRAL or mixed.',
+  breakout: '🚀 BREAKOUT RULES: Run breakout detector above — need 4+ conditions. Enter on 15M green candle CLOSE above the Fib level with volume spike. Do NOT enter before close — wait for confirmation. Stop below the Fib level that was broken. TP at next Fib extension (127.2% or 161.8%). Best when market bias is LONG and TOTAL3 rising.',
+  rotation: '🔄 ALTCOIN ROTATION RULES: BTC.D must be falling. TOTAL3 must be rising. BTC holding steady or slightly green. Find Tier 2 or Tier 3 coins still at demand zones while others already pumping — those are laggards. Enter long on the laggard. Stop below demand zone. TP at Fib extension. These are the 5-10% moves in hours. May 10 SUI move was a rotation play.'
+};
+
+function setTradeType(type) {
+  ['bounce','breakout','rotation'].forEach(t => {
+    document.getElementById('tt-'+t).className = 'tt-btn';
+  });
+  document.getElementById('tt-'+type).classList.add('active-'+type);
+  document.getElementById('tradeTypeRules').textContent = tradeTypeRules[type];
+  document.getElementById('tradeTypeRules').style.color = type==='bounce'?'#86efac':type==='breakout'?'#d8b4fe':'#67e8f9';
+  localStorage.setItem('tradeType', type);
+}
+
+// INIT
+window.onload = () => {
+  const saved = JSON.parse(localStorage.getItem('biasState') || 'null');
+  if (saved) {
+    const labels0 = [['BTC.D Falling','Alts pumping 🟢'],['BTC.D Flat','Neutral 🟡'],['BTC.D Rising','BTC dominates 🔴']];
+    const labels1 = [['TOTAL2 Rising','Alts getting money 🟢'],['TOTAL2 Flat','Neutral 🟡'],['TOTAL2 Falling','Alts losing money 🔴']];
+    const labels2 = [['TOTAL3 Rising','Small caps pumping 🟢'],['TOTAL3 Flat','Neutral 🟡'],['TOTAL3 Falling','Small caps bleeding 🔴']];
+    const labels3 = [['F&G Improving','Sentiment rising 🟢'],['F&G Flat','Sentiment flat 🟡'],['F&G Declining','Sentiment falling 🔴']];
+    const labels4 = [['ETF Net Inflows','Institutions buying 🟢'],['ETF Neutral','Mixed flows 🟡'],['ETF Net Outflows','Institutions selling 🔴']];
+    const labels5 = [['BTC Holding/Rising','Strong base 🟢'],['BTC Ranging','No direction 🟡'],['BTC Dropping','Weakness 🔴']];
+    const allLabels = [labels0,labels1,labels2,labels3,labels4,labels5];
+    saved.forEach((s,i) => {
+      if(s) {
+        const idx = s==='bull'?0:s==='neut'?1:2;
+        setBias(i, s, allLabels[i][idx][0], allLabels[i][idx][1]);
+      }
+    });
+  }
+  const tt = localStorage.getItem('tradeType');
+  if (tt) setTradeType(tt);
+};
+
+
 window.onload=()=>{
-  loadChecklist(); renderTrades();
-  const mode=localStorage.getItem('marketMode'); if(mode) setMode(mode);
-  const oil=localStorage.getItem('oilDir'); if(oil) setOil(oil);
-  const notes=localStorage.getItem('sessionNotes'); if(notes) document.getElementById('sessionNotes').value=notes;
+  loadChecklist();renderTrades();
+  const mode=localStorage.getItem('marketMode');if(mode)setMode(mode);
+  const oil=localStorage.getItem('oilDir');if(oil)setOil(oil);
+  const notes=localStorage.getItem('sessionNotes');if(notes)document.getElementById('sessionNotes').value=notes;
 };
 </script>
 </body>
