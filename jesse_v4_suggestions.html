@@ -190,6 +190,16 @@ h1 { text-align: center; font-size: 1.1rem; letter-spacing: 3px; color: #38bdf8;
   <div class="strip-pip weekend-pip" id="weekendPip" style="color:#f59e0b">⏳ CHECK FLAGS</div>
 </div>
 
+
+<div class="strip" style="border:1px solid #22d3ee; max-width:960px; margin:0 auto 9px; background:#020e14; border-radius:9px; padding:8px 13px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+  <span style="font-size:1rem">💡</span>
+  <div>
+    <div style="font-size:0.56rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#22d3ee">VIP1 Fee Reminder</div>
+    <div style="font-size:0.75rem;font-weight:700;color:#22d3ee">Maker: 0.02% | Taker: 0.05% | Funding: ~0.01%/8H</div>
+  </div>
+  <div style="font-size:0.63rem;color:#67e8f9;flex:1;min-width:160px">Use <strong>limit orders</strong> — 2.5× cheaper than market. Net $100 target = Gross $112 needed.</div>
+  <div style="background:#020e14;border:1px solid #22d3ee;border-radius:20px;padding:2px 7px;font-size:0.58rem;font-weight:700;color:#22d3ee">RULE 14 + 15</div>
+</div>
 <div class="mode-bar">
   <div class="mode-left">📊 Market Mode</div>
   <div class="mode-right" id="modeDisplay">—</div>
@@ -246,7 +256,7 @@ const masterItems=[
   'Crypto news swept','BTC direction set','Tier 1 scanned (11)','Tier 2 scanned (13)',
   'Gold/Silver/Oil checked','Base score 5/8+ (6/8 wknd)','🐋 Manip scanner run','🐋 <3 red flags confirmed',
   '🐟 Fish Check run','🐟 Fib level confirmed','🐟 StochRSI confirmed','🐟 4H bias confirmed',
-  'Leverage set per scores','TP1 TP2 SL set','Max 2 trades open','$100 hit → STOP ✋'
+  'Leverage set per scores','TP1 TP2 SL set','Max 2 trades open','$100 NET hit → STOP ✋ (gross ~$112)'
 ];
 const clState=JSON.parse(localStorage.getItem('checklist')||'[]');
 const clGrid=document.getElementById('masterChecklist');
@@ -424,6 +434,11 @@ function renderCard(t){
         <div class="lvl sl"><div class="lbl">Stop Loss</div><div class="val">${fmtP(t.sl)}</div></div>
       </div>
       ${t.tp2?`<div class="lvl tp" style="margin-bottom:6px"><div class="lbl">TP2 40% runner</div><div class="val">${fmtP(t.tp2)}</div></div>`:''}
+      ${t.margin?`<div style="background:#020e14;border:1px solid #22d3ee33;border-radius:6px;padding:6px 8px;margin-bottom:6px">
+        <div style="font-size:0.52rem;color:#22d3ee;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px">💡 Fee Estimate (VIP1)</div>
+        <div style="font-size:0.66rem;color:#67e8f9">Entry + Exit (taker): ~$${(t.margin * (t.leverage||1) * 0.001).toFixed(2)} | Use limit order to save $${(t.margin * (t.leverage||1) * 0.0006).toFixed(2)}</div>
+        <div style="font-size:0.66rem;color:#67e8f9">Net TP target: ~$${((t.margin * (t.leverage||1) * 0.035) - (t.margin * (t.leverage||1) * 0.001)).toFixed(2)} after fees</div>
+      </div>`:''}
       ${t.oilNote?`<div class="oil-info-box"><div class="oil-info-lbl">🛢️ Oil Note</div><div class="oil-info-txt">${t.oilNote}</div></div>`:''}
       ${t.manipNote?`<div class="manip-info-box"><div class="manip-info-lbl">🐋 Manipulation Note</div><div class="manip-info-txt">${t.manipNote}</div></div>`:''}
       ${t.weekendNote?`<div class="weekend-info-box"><div class="weekend-info-lbl">📅 Weekend Note</div><div class="weekend-info-txt">${t.weekendNote}</div></div>`:''}
